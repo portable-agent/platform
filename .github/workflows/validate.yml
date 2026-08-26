@@ -28,11 +28,10 @@ jobs:
             Get-Content -Raw $_.FullName | ConvertFrom-Json | Out-Null
           }
       - name: Scan repository
-        uses: aquasecurity/trivy-action@0.36.0
+        uses: aquasecurity/trivy-action@v0.36.0
         with:
           scan-type: fs
           scanners: vuln,secret,misconfig
           severity: HIGH,CRITICAL
           ignore-unfixed: true
           exit-code: "1"
-
