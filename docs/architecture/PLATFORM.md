@@ -1,6 +1,6 @@
-# Platform architecture
+# Архитектура платформы
 
-## System landscape
+## Ландшафт системы
 
 ```mermaid
 flowchart TB
@@ -22,22 +22,21 @@ flowchart TB
     Kafka --> Notification[Notification Service]
 ```
 
-## Architectural invariants
+## Архитектурные инварианты
 
-- Every stateful service owns its database and migrations.
-- A service never reads another service's database directly.
-- Every command carries `actionId`, `tenantId`, `correlationId`, and `idempotencyKey`.
-- Approval is bound to the hash of an immutable action payload.
-- A financial operation is never executed from free-form model output.
-- Temporal owns durable command workflows; Kafka distributes domain and integration events.
-- Events are delivered at least once and consumers are idempotent.
-- Transactional outbox keeps local state changes and event publication consistent.
-- Contracts are backward compatible within a major version and validated in CI.
-- All services propagate W3C Trace Context and emit OpenTelemetry data.
+- Каждый stateful-сервис владеет своей базой данных и миграциями.
+- Сервис никогда не читает базу другого сервиса напрямую.
+- Каждая команда содержит `actionId`, `tenantId`, `correlationId` и `idempotencyKey`.
+- Подтверждение привязано к хэшу неизменяемого action payload.
+- Финансовая операция никогда не выполняется из свободного вывода модели.
+- Temporal владеет durable command workflows; Kafka распространяет domain и integration events.
+- События доставляются как минимум один раз, consumers идемпотентны.
+- Transactional outbox согласует изменения локального состояния и публикацию событий.
+- Контракты обратно совместимы в пределах major-версии и проверяются в CI.
+- Все сервисы передают W3C Trace Context и отправляют данные OpenTelemetry.
 
-## Repository boundaries
+## Границы репозиториев
 
-The platform uses a polyrepo model. Each deployable service, SDK, policy bundle, and infrastructure control
-plane has a separate repository. The platform repository links them through Backstage-compatible catalog
-metadata and versioned contracts; it never compiles them together.
-
+Платформа использует polyrepo-модель. Каждый deployable-сервис, SDK, policy bundle и infrastructure control
+plane находятся в отдельном репозитории. Платформа связывает их через совместимые с Backstage метаданные
+каталога и версионируемые контракты; она никогда не собирает их вместе.

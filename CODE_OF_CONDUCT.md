@@ -1,14 +1,12 @@
-# Code of Conduct
+# Кодекс поведения
 
-We are committed to a welcoming, safe, and productive community regardless of experience, identity,
-background, nationality, appearance, disability, religion, or personal circumstance.
+Мы создаём доброжелательное, безопасное и продуктивное сообщество независимо от опыта, идентичности,
+происхождения, гражданства, внешности, инвалидности, религии или личных обстоятельств.
 
-Expected behavior includes constructive technical disagreement, clear evidence, respectful review,
-credit for others' work, privacy awareness, and patience with new contributors. Harassment, threats,
-discrimination, sexualized conduct, deliberate humiliation, doxxing, and disclosure of private information
-are unacceptable.
+Ожидаемое поведение включает конструктивные технические разногласия, ясные доказательства, уважительное
+ревью, указание авторства, внимание к приватности и терпение к новым участникам. Недопустимы травля,
+угрозы, дискриминация, сексуализированное поведение, намеренное унижение, доксинг и раскрытие личных данных.
 
-Report conduct concerns privately to the maintainers through the repository's security contact channel.
-Maintainers may edit or remove content, restrict participation, or permanently ban participants. Reports
-will be handled confidentially and without retaliation.
-
+Сообщайте о нарушениях maintainer-ам приватно через security contact channel репозитория. Maintainer-ы
+могут изменить или удалить материалы, ограничить участие или навсегда заблокировать участника. Сообщения
+рассматриваются конфиденциально и без ответных мер.

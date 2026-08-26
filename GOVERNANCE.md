@@ -1,25 +1,24 @@
-# Governance
+# Управление проектом
 
-Portable Agent starts with a maintainer-led governance model and is designed to evolve toward a small
-technical steering committee as the contributor base grows.
+Portable Agent начинает с модели управления maintainer-ами и по мере роста сообщества может перейти к
+небольшому техническому steering committee.
 
-## Roles
+## Роли
 
-- Contributors submit issues, documentation, code, reviews, and operational knowledge.
-- Reviewers consistently review a subsystem and may approve non-breaking changes there.
-- Maintainers own releases, repository settings, security response, and project-wide decisions.
+- Contributors предлагают issues, документацию, код, ревью и эксплуатационные знания.
+- Reviewers регулярно проверяют подсистему и могут одобрять в ней неблокирующие изменения.
+- Maintainers отвечают за релизы, настройки репозиториев, реакцию на инциденты безопасности и решения проекта.
 
-Roles are earned through sustained, constructive contribution. Access follows least privilege and may be
-removed after prolonged inactivity or a Code of Conduct violation.
+Роли получают за постоянный конструктивный вклад. Доступ предоставляется по принципу наименьших
+привилегий и может быть отозван после длительной неактивности или нарушения Кодекса поведения.
 
-## Decisions
+## Решения
 
-Routine changes use pull-request consensus. Architecture, security, governance, and breaking public API
-decisions require an ADR and approval from at least two maintainers once the project has two maintainers.
-Before then, the founding maintainer records the rationale publicly.
+Обычные изменения принимаются консенсусом в pull request. Решения по архитектуре, безопасности,
+управлению и ломающим публичный API изменениям требуют ADR и одобрения минимум двух maintainer-ов,
+когда в проекте появятся два maintainer-а. До этого обоснование публично фиксирует founding maintainer.
 
-## Releases
+## Релизы
 
-Releases are reproducible from protected tags. Artifacts are built by CI, published with provenance and
-SBOM, and promoted between environments by digest without rebuilding.
-
+Релизы воспроизводимы из защищённых тегов. Артефакты собираются CI, публикуются с provenance и SBOM и
+перемещаются между окружениями по digest без повторной сборки.

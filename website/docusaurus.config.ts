@@ -4,11 +4,11 @@ import {themes as prismThemes} from 'prism-react-renderer';
 
 const config: Config = {
   title: 'Portable Agent',
-  tagline: 'A portable personal AI agent that turns intent into safe action',
-  url: 'https://danliaqwerty20.github.io',
-  baseUrl: '/portable-agent-platform/',
-  organizationName: 'DanliaQwerty20',
-  projectName: 'portable-agent-platform',
+  tagline: 'Переносимый персональный AI-агент, превращающий намерение в безопасное действие',
+  url: 'https://portable-agent.github.io',
+  baseUrl: '/platform/',
+  organizationName: 'portable-agent',
+  projectName: 'platform',
   onBrokenLinks: 'throw',
   markdown: {
     mermaid: true,
@@ -18,8 +18,8 @@ const config: Config = {
   },
   themes: ['@docusaurus/theme-mermaid'],
   i18n: {
-    defaultLocale: 'en',
-    locales: ['en'],
+    defaultLocale: 'ru',
+    locales: ['ru'],
   },
   presets: [
     [
@@ -30,7 +30,7 @@ const config: Config = {
           routeBasePath: '/',
           sidebarPath: './sidebars.ts',
           editUrl: ({docPath}) =>
-            `https://github.com/DanliaQwerty20/portable-agent-platform/edit/main/docs/${docPath}`,
+            `https://github.com/portable-agent/platform/edit/main/docs/${docPath}`,
         },
         blog: false,
         theme: {
@@ -43,10 +43,10 @@ const config: Config = {
     navbar: {
       title: 'Portable Agent',
       items: [
-        {to: '/architecture/PLATFORM', label: 'Architecture', position: 'left'},
-        {to: '/delivery/ROADMAP', label: 'Roadmap', position: 'left'},
+        {to: '/architecture/PLATFORM', label: 'Архитектура', position: 'left'},
+        {to: '/delivery/ROADMAP', label: 'Дорожная карта', position: 'left'},
         {
-          href: 'https://github.com/DanliaQwerty20/portable-agent-platform',
+          href: 'https://github.com/portable-agent/platform',
           label: 'GitHub',
           position: 'right',
         },

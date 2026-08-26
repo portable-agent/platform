@@ -1,19 +1,19 @@
-# ADR-0001: Independent service repositories
+# ADR-0001: Независимые репозитории сервисов
 
 - Status: accepted
 - Date: 2026-08-26
 
-## Decision
+## Решение
 
-Use a polyrepo model. The platform control plane and every deployable service have separate repositories,
-independent versioning, ownership, and delivery pipelines. Cross-service contracts are also promoted to a
-dedicated repository when the GitHub Organization is created. Organization reusable workflows provide
-consistent CI without compiling repositories together.
+Использовать polyrepo-модель. Управляющий слой платформы и каждый deployable-сервис имеют отдельные
+репозитории, независимые версионирование, владение и delivery pipelines. Межсервисные контракты также
+переносятся в отдельный репозиторий после создания GitHub Organization. Organization reusable workflows
+дают единый CI без совместной сборки репозиториев.
 
-Shared Java or TypeScript packages are allowed only for technical concerns. Domain models are not shared
-as libraries; service boundaries are versioned API and event contracts.
+Общие Java- или TypeScript-пакеты допустимы только для технических задач. Доменные модели не разделяются
+как библиотеки; границы сервисов задаются версионируемыми API- и event-контрактами.
 
-## Consequences
+## Последствия
 
-Teams practice independent releases, ownership, and contract testing. The platform must automate
-repository creation, policy enforcement, dependency updates, and golden-path templates.
+Команды получают независимые релизы, владение и contract testing. Платформа должна автоматизировать
+создание репозиториев, применение политик, обновление зависимостей и golden-path templates.

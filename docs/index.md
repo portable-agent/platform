@@ -5,16 +5,15 @@ slug: /
 
 # Portable Agent Platform
 
-Portable Agent is an open-source platform for turning natural-language intent into safe, inspectable,
-and auditable actions across user-connected services.
+Portable Agent — открытая платформа, превращающая намерение на естественном языке в безопасные,
+проверяемые и доступные для аудита действия в подключённых пользователем сервисах.
 
-The system is channel-independent, multi-tenant, and built around immutable action proposals, explicit
-policy decisions, durable workflows, and MCP integrations.
+Система независима от каналов, поддерживает multi-tenancy и строится вокруг неизменяемых предложений
+действий, явных policy decisions, durable workflows и MCP-интеграций.
 
-## Start here
+## Начните здесь
 
-- Read the [platform architecture](architecture/PLATFORM.md).
-- Follow the [action execution sequence](architecture/ACTION_EXECUTION.md).
-- Understand the [technology strategy](architecture/TECHNOLOGY_STRATEGY.md).
-- Review the [delivery roadmap](delivery/ROADMAP.md).
-
+- Изучите [архитектуру платформы](architecture/PLATFORM.md).
+- Проследите [последовательность выполнения действия](architecture/ACTION_EXECUTION.md).
+- Ознакомьтесь с [технологической стратегией](architecture/TECHNOLOGY_STRATEGY.md).
+- Посмотрите [дорожную карту поставки](delivery/ROADMAP.md).

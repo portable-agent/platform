@@ -1,29 +1,28 @@
-# Technology strategy
+# Технологическая стратегия
 
-Portable Agent is polyglot by design, but not polyglot by accident. The supported language set is limited
-to Java, Python, and TypeScript until a measured requirement justifies another runtime.
+Portable Agent полиглотен по замыслу, но не случайно. Набор языков ограничен Java, Python и TypeScript,
+пока измеримое требование не обоснует другой runtime.
 
-| Workload | Technology | Why |
+| Нагрузка | Технология | Причина |
 |---|---|---|
-| Transactional core | Java 25, Spring Boot 4 | Strong consistency tooling, mature persistence and observability ecosystem |
-| Durable workflows | Temporal Java SDK | Long-running actions, retries, timers, approvals, compensation, and replay |
-| Agent runtime | Python, FastAPI, Pydantic | First-class model, evaluation, retrieval, and scientific ecosystem |
-| Channels and BFF | TypeScript, Node.js | Fast API adaptation and shared types with web clients |
-| MCP gateway/connectors | TypeScript first; Python or Java when provider libraries require it | Tier-1 MCP ecosystem and fast connector development |
-| Web and Widget SDK | TypeScript, React | Portable typed UI contracts and broad contributor familiarity |
-| Policy decisions | Open Policy Agent, Rego | Reviewable policy-as-code separated from application code |
-| Identity | Keycloak, OIDC/OAuth 2.1 | Standards-based self-hosted identity and federation |
-| Events | Kafka | Durable integration events, replay, fan-out, and ecosystem support |
-| Data | PostgreSQL per service; Redis for ephemeral state | Explicit ownership and operational maturity |
-| Telemetry | OpenTelemetry, Prometheus, Grafana, Loki, Tempo | Vendor-neutral metrics, logs, and traces |
-| Delivery | OCI, Kubernetes, Helm, Argo CD, External Secrets | Reproducible images and GitOps-based deployment |
+| Транзакционное ядро | Java 25, Spring Boot 4 | Инструменты строгой согласованности, зрелая экосистема persistence и observability |
+| Durable workflows | Temporal Java SDK | Долгие действия, retries, timers, approvals, compensation и replay |
+| Agent runtime | Python, FastAPI, Pydantic | Сильная экосистема моделей, evaluation, retrieval и научных инструментов |
+| Каналы и BFF | TypeScript, Node.js | Быстрая адаптация API и общие типы с web-клиентами |
+| MCP gateway/connectors | Сначала TypeScript; Python или Java при необходимости библиотек провайдера | Tier-1 MCP-экосистема и быстрая разработка коннекторов |
+| Web и Widget SDK | TypeScript, React | Переносимые типизированные UI-контракты и знакомый стек |
+| Policy decisions | Open Policy Agent, Rego | Проверяемый policy-as-code отдельно от application code |
+| Identity | Keycloak, OIDC/OAuth 2.1 | Стандартная self-hosted идентификация и federation |
+| Events | Kafka | Durable integration events, replay, fan-out и поддержка экосистемы |
+| Data | PostgreSQL на сервис; Redis для ephemeral state | Явное владение и зрелость эксплуатации |
+| Telemetry | OpenTelemetry, Prometheus, Grafana, Loki, Tempo | Независимые от вендора metrics, logs и traces |
+| Delivery | OCI, Kubernetes, Helm, Argo CD, External Secrets | Воспроизводимые образы и GitOps-развёртывание |
 
-## What we intentionally avoid
+## Чего мы намеренно избегаем
 
-- A different language for every service.
-- Shared domain-model libraries across repositories.
-- A custom workflow engine built on Kafka consumers and database status columns.
-- Kubernetes before local containers and contracts are reliable.
-- Backstage as a runtime dependency. It is a developer portal and catalog projection only.
-- New infrastructure without an owner, runbook, health signal, and failure mode.
-
+- Отдельного языка для каждого сервиса.
+- Общих библиотек доменных моделей между репозиториями.
+- Самописного workflow engine на Kafka consumers и колонках статуса в базе.
+- Kubernetes до того, как локальные контейнеры и контракты станут надёжными.
+- Backstage как runtime-зависимости: это только портал разработчика и projection каталога.
+- Новой инфраструктуры без владельца, runbook, health signal и описанного failure mode.

@@ -1,6 +1,6 @@
-# Repository and organization model
+# Модель репозиториев и организации
 
-The target GitHub layout is an Organization, not a collection of modules in one repository.
+Целевая структура GitHub — Organization, а не набор модулей в одном репозитории.
 
 ```text
 portable-agent organization
@@ -23,16 +23,15 @@ portable-agent organization
 └── portable-agent-widget-sdk              independently published package
 ```
 
-## Rules
+## Правила
 
-- No Git submodules and no multi-service Gradle, Maven, pnpm, or Python workspace.
-- Every deployable repository has its own `Dockerfile`, tests, migrations, SBOM, image, release, and SLO.
-- Organization reusable workflows standardize delivery but repositories call them explicitly.
-- Service templates provide a starting point; generated services do not inherit source code from templates.
-- GitOps consumes immutable image digests and never builds application code.
-- Cross-service integration is validated through versioned contracts and consumer tests.
+- Никаких Git submodules и multi-service Gradle, Maven, pnpm или Python workspace.
+- У каждого deployable-репозитория свои `Dockerfile`, тесты, миграции, SBOM, image, release и SLO.
+- Organization reusable workflows стандартизируют поставку, но репозитории вызывают их явно.
+- Шаблоны сервисов дают стартовую точку; созданные сервисы не наследуют исходный код шаблонов.
+- GitOps использует неизменяемые image digests и никогда не собирает application code.
+- Межсервисная интеграция проверяется версионируемыми контрактами и consumer tests.
 
-The bootstrap contracts currently live in the platform repository so architecture can be validated before
-the Organization exists. They move once, with history, into `portable-agent-contracts` when that repository
-is created. This is not a runtime coupling.
-
+Bootstrap-контракты пока находятся в репозитории платформы, чтобы проверить архитектуру до создания
+Organization. После создания `portable-agent-contracts` они один раз переедут туда вместе с историей.
+Это не runtime coupling.

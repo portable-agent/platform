@@ -1,12 +1,11 @@
-# Action execution
+# Выполнение действия
 
-The sequence below is executable documentation: Mermaid renders it in pull requests and in the public
-documentation portal.
+Ниже приведена исполняемая документация: Mermaid отображает её в pull request и публичном портале.
 
 ```mermaid
 sequenceDiagram
     autonumber
-    actor User
+    actor User as Пользователь
     participant Channel as Telegram adapter
     participant Gateway as Channel Gateway
     participant Conversation as Conversation Service
@@ -19,7 +18,7 @@ sequenceDiagram
     participant Calendar as Calendar MCP
     participant Audit as Audit Service
 
-    User->>Channel: Voice command
+    User->>Channel: Голосовая команда
     Channel->>Gateway: Normalized message and audio reference
     Gateway->>Conversation: Accept message
     Conversation->>Agent: Interpret intent with scoped context
@@ -41,6 +40,5 @@ sequenceDiagram
     Action-->>Channel: Result widget
 ```
 
-The model is not called again after approval to regenerate tool arguments. Temporal receives the stored
-action ID, and the executor verifies the payload hash before invoking the tool.
-
+После подтверждения модель не вызывается повторно для генерации аргументов инструмента. Temporal получает
+сохранённый action ID, а executor проверяет payload hash перед вызовом инструмента.

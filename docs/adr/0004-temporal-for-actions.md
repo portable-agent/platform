@@ -1,20 +1,20 @@
-# ADR-0004: Temporal for durable action execution
+# ADR-0004: Temporal для durable action execution
 
 - Status: accepted
 - Date: 2026-08-26
 
-## Context
+## Контекст
 
-Actions can wait for user approval, provider recovery, scheduled time, or compensation. Implementing these
-semantics with Kafka consumers and database status fields would create a custom workflow engine.
+Действия могут ждать подтверждения пользователя, восстановления провайдера, назначенного времени или
+компенсации. Реализация этих семантик через Kafka consumers и поля статуса в базе создала бы самописный
+workflow engine.
 
-## Decision
+## Решение
 
-Action Service owns Temporal workflows. Kafka remains the integration-event backbone and is not used as a
-substitute for workflow state. Workflow code must be deterministic; provider calls run as Activities.
+Action Service владеет Temporal workflows. Kafka остаётся backbone интеграционных событий и не заменяет
+состояние workflow. Код workflow должен быть детерминированным; вызовы провайдеров выполняются как Activities.
 
-## Consequences
+## Последствия
 
-The platform gains durable timers, retries, cancellation, versioning, visibility, and replay. Temporal
-becomes operational infrastructure and therefore requires backup, monitoring, upgrade, and runbook work.
-
+Платформа получает durable timers, retries, cancellation, versioning, visibility и replay. Temporal
+становится эксплуатационной инфраструктурой и требует backup, monitoring, upgrade и runbook-работ.

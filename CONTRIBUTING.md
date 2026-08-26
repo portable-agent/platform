@@ -1,35 +1,35 @@
-# Contributing
+# Участие в проекте
 
-Thank you for helping build Portable Agent. Contributions of code, contracts, documentation, threat
-models, evaluations, and operational runbooks are welcome.
+Спасибо за помощь в создании Portable Agent. Мы принимаем изменения кода, контрактов, документации,
+моделей угроз, evaluations и эксплуатационных runbook-файлов.
 
-## Development process
+## Процесс разработки
 
-1. Discuss substantial product or architecture changes in an issue before implementation.
-2. Create a short-lived branch from the current `main`.
-3. Use Conventional Commits: `feat:`, `fix:`, `refactor:`, `test:`, `docs:`, `build:`, or `ci:`.
-4. Add tests and observability with behavior changes.
-5. Open a pull request and complete the operational checklist.
-6. Wait for required checks and CODEOWNERS review.
-7. Use squash merge; do not push directly to `main`.
+1. До реализации обсудите существенные изменения продукта или архитектуры в issue.
+2. Создайте короткоживущую ветку от текущей `main`.
+3. Используйте Conventional Commits: `feat:`, `fix:`, `refactor:`, `test:`, `docs:`, `build:` или `ci:`.
+4. При изменении поведения добавьте тесты и наблюдаемость.
+5. Откройте pull request и заполните эксплуатационный чек-лист.
+6. Дождитесь обязательных проверок и ревью CODEOWNERS.
+7. Используйте squash merge; не отправляйте изменения напрямую в `main`.
 
-## Cross-repository changes
+## Межрепозиторные изменения
 
-A breaking contract change requires a compatibility plan, consumer inventory, staged rollout, and rollback.
-Service repositories are released independently. Do not coordinate releases through shared snapshots or
-unversioned domain libraries.
+Ломающие изменения контракта требуют плана совместимости, инвентаризации потребителей, поэтапного
+раскатывания и отката. Репозитории сервисов выпускаются независимо. Не координируйте релизы через общие
+снимки или неверсионируемые доменные библиотеки.
 
-## Architecture decisions
+## Архитектурные решения
 
-Create an ADR when a change affects service boundaries, supported runtimes, data ownership, security
-invariants, public contracts, or the operational model. An accepted ADR is changed by a superseding ADR,
-not silently rewritten.
+Создавайте ADR, если изменение затрагивает границы сервисов, поддерживаемые runtime, владение данными,
+инварианты безопасности, публичные контракты или эксплуатационную модель. Принятый ADR изменяется новым
+замещающим ADR, а не переписывается незаметно.
 
-## Security and privacy
+## Безопасность и приватность
 
-Never add credentials, personal data, production payloads, or raw user conversations to source control,
-issues, tests, fixtures, or CI artifacts. Follow [SECURITY.md](SECURITY.md) for vulnerability reports.
+Никогда не добавляйте credentials, персональные данные, production payloads или необработанные диалоги
+пользователей в исходный код, issues, тесты, fixtures или CI-артефакты. Для сообщений об уязвимостях
+следуйте [SECURITY.md](SECURITY.md).
 
-By contributing, you agree that your contribution is licensed under Apache License 2.0 and that you will
-follow the [Code of Conduct](CODE_OF_CONDUCT.md).
-
+Участвуя в проекте, вы соглашаетесь лицензировать свой вклад по Apache License 2.0 и соблюдать
+[Кодекс поведения](CODE_OF_CONDUCT.md).

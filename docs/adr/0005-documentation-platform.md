@@ -1,19 +1,18 @@
-# ADR-0005: Public docs and developer portal
+# ADR-0005: Публичная документация и портал разработчика
 
 - Status: accepted
 - Date: 2026-08-26
 
-## Decision
+## Решение
 
-Use Docusaurus and Mermaid for the public, versioned, open-source documentation site deployed through
-GitHub Pages. Keep documentation as Markdown beside architecture and contracts.
+Использовать Docusaurus и Mermaid для публичного версионируемого open-source сайта документации,
+развёртываемого через GitHub Pages. Хранить документацию в Markdown рядом с архитектурой и контрактами.
 
-Adopt Backstage Catalog and TechDocs after the first service repositories exist. Each service will own a
-root `catalog-info.yaml` and docs directory. Backstage is a projection for discovery and templates, not the
-source of truth; Git repositories remain authoritative.
+Подключить Backstage Catalog и TechDocs после появления первых репозиториев сервисов. Каждый сервис будет
+владеть корневым `catalog-info.yaml` и каталогом docs. Backstage — projection для discovery и templates,
+а не источник истины; авторитетными остаются Git-репозитории.
 
-## Consequences
+## Последствия
 
-External contributors get a lightweight public portal immediately. The team can later add an internal
-service catalog and golden-path scaffolder without migrating the documentation model.
-
+Внешние участники сразу получают лёгкий публичный портал. Позже команда сможет добавить внутренний каталог
+сервисов и golden-path scaffolder без миграции модели документации.

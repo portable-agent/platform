@@ -1,21 +1,20 @@
 # Portable Agent Platform
 
-An open-source platform for a portable personal AI agent. A user expresses an intent by voice or text,
-reviews a deterministic action in a channel-independent widget, and safely executes it through MCP tools.
+Открытая платформа переносимого персонального AI-агента. Пользователь формулирует намерение голосом или
+текстом, проверяет детерминированное действие в независимом от канала виджете и безопасно выполняет его
+через MCP-инструменты.
 
-This is a standalone product. It is not related to the existing `planner` repository.
+Это отдельный продукт, не связанный с существующим репозиторием `planner`.
 
-[Русская версия](README.ru.md)
+## Назначение репозитория
 
-## Repository role
+Этот репозиторий — управляющий слой платформы: архитектура, межсервисные контракты, каталог сервисов,
+документация разработчика, GitOps-конфигурация и общие инженерные стандарты. Каждый deployable-сервис
+находится в собственной GitHub-репе, владеет своими данными и имеет независимый pipeline.
 
-This repository is the platform control plane: architecture, cross-service contracts, service catalog,
-developer documentation, GitOps configuration, and organization-wide engineering standards. Every
-deployable service lives in its own GitHub repository, owns its data, and has an independent pipeline.
+Это намеренно не монорепозиторий: здесь нет модулей реализации сервисов.
 
-It is deliberately not a monorepo and does not contain service implementation modules.
-
-## First vertical slice
+## Первый вертикальный срез
 
 ```text
 Telegram voice -> STT -> Conversation -> Agent -> Proposed action
@@ -23,18 +22,18 @@ Telegram voice -> STT -> Conversation -> Agent -> Proposed action
                -> MCP Gateway -> Calendar -> Result + audit trail
 ```
 
-## Architecture
+## Архитектура
 
-- [Platform architecture](docs/architecture/PLATFORM.md)
-- [Action execution sequence](docs/architecture/ACTION_EXECUTION.md)
-- [Technology strategy](docs/architecture/TECHNOLOGY_STRATEGY.md)
-- [Repository and organization model](docs/architecture/REPOSITORY_MODEL.md)
-- [Service catalog](catalog/services.yaml)
-- [Delivery roadmap](docs/delivery/ROADMAP.md)
-- [Architecture decision records](docs/adr/)
+- [Архитектура платформы](docs/architecture/PLATFORM.md)
+- [Последовательность выполнения действия](docs/architecture/ACTION_EXECUTION.md)
+- [Технологическая стратегия](docs/architecture/TECHNOLOGY_STRATEGY.md)
+- [Модель репозиториев и организации](docs/architecture/REPOSITORY_MODEL.md)
+- [Каталог сервисов](catalog/services.yaml)
+- [Дорожная карта поставки](docs/delivery/ROADMAP.md)
+- [Записи архитектурных решений](docs/adr/)
 
-## Open-source project
+## Открытый проект
 
-Portable Agent Platform is licensed under Apache License 2.0. Read the
-[contribution guide](CONTRIBUTING.md), [governance model](GOVERNANCE.md),
-[code of conduct](CODE_OF_CONDUCT.md), and [security policy](SECURITY.md) before contributing.
+Portable Agent Platform распространяется по лицензии Apache License 2.0. Перед участием ознакомьтесь с
+[правилами внесения изменений](CONTRIBUTING.md), [моделью управления](GOVERNANCE.md),
+[кодексом поведения](CODE_OF_CONDUCT.md) и [политикой безопасности](SECURITY.md).

@@ -1,38 +1,37 @@
-# Delivery roadmap
+# Дорожная карта поставки
 
-## Phase 0 — Platform foundation
+## Фаза 0 — Основа платформы
 
-- GitHub Organization, Teams, CODEOWNERS, protected branches, and repository rulesets.
-- Reusable CI for Java, Python, TypeScript, containers, policies, and contracts.
-- GHCR publishing with SBOM, provenance, attestations, and vulnerability gates.
-- Public Docusaurus documentation and Backstage-compatible catalog metadata.
-- Local PostgreSQL, Kafka, Keycloak, Temporal, OPA, and observability stack.
-- Kubernetes development cluster, Helm charts, Argo CD, and External Secrets.
+- GitHub Organization, Teams, CODEOWNERS, защищённые ветки и rulesets репозиториев.
+- Переиспользуемый CI для Java, Python, TypeScript, контейнеров, политик и контрактов.
+- Публикация в GHCR с SBOM, provenance, attestations и vulnerability gates.
+- Публичная документация Docusaurus и совместимые с Backstage метаданные каталога.
+- Локальный PostgreSQL, Kafka, Keycloak, Temporal, OPA и стек observability.
+- Development-кластер Kubernetes, Helm charts, Argo CD и External Secrets.
 
-## Phase 1 — First vertical slice
+## Фаза 1 — Первый вертикальный срез
 
-- Channel Gateway and Telegram adapter.
-- Conversation Service and Agent Runtime.
-- Action and Approval services with Temporal.
+- Channel Gateway и Telegram adapter.
+- Conversation Service и Agent Runtime.
+- Action и Approval services с Temporal.
 - OPA policy bundle.
-- MCP Gateway and Calendar MCP.
-- Widget SDK and confirmation card.
+- MCP Gateway и Calendar MCP.
+- Widget SDK и confirmation card.
 
-Definition of Done: a voice command creates an explicitly approved calendar event; the entire path is
-visible in distributed traces and an audit record.
+Definition of Done: голосовая команда создаёт явно подтверждённое событие календаря; весь путь виден в
+распределённых трассировках и аудиторской записи.
 
-## Phase 2 — Product hardening
+## Фаза 2 — Укрепление продукта
 
-- Multi-tenancy and per-user connections.
-- Rate limits, quotas, and model cost controls.
-- Dead-letter handling and operational runbooks.
-- SLOs, alerts, backup/restore, and disaster-recovery exercise.
-- Web/PWA client and versioned Widget SDK.
+- Multi-tenancy и подключения каждого пользователя.
+- Rate limits, quotas и контроль стоимости моделей.
+- Обработка dead-letter и эксплуатационные runbook-файлы.
+- SLO, alerts, backup/restore и учение по disaster recovery.
+- Web/PWA-клиент и версионируемый Widget SDK.
 
-## Phase 3 — High-risk actions
+## Фаза 3 — Высокорисковые действия
 
-- Wallet connector in read-only and simulation modes.
-- Fee preview and policy limits.
-- Step-up authentication and immutable approvals.
-- Limited transfer pilot after threat modeling and an independent security review.
-
+- Wallet connector в режимах read-only и simulation.
+- Предпросмотр комиссии и policy limits.
+- Step-up authentication и неизменяемые approvals.
+- Ограниченный пилот переводов после threat modeling и независимого security review.

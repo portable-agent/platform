@@ -1,24 +1,23 @@
-# Security policy
+# Политика безопасности
 
-## Reporting
+## Сообщение об уязвимости
 
-Do not disclose vulnerabilities, credentials, personal data, or exploitable details in public issues.
-Use GitHub Private Vulnerability Reporting for the affected repository. If that channel is unavailable,
-open a public issue containing no sensitive details and ask a maintainer for a private contact channel.
+Не публикуйте уязвимости, credentials, персональные данные или детали эксплуатации в открытых issues.
+Используйте GitHub Private Vulnerability Reporting для затронутого репозитория. Если канал недоступен,
+создайте public issue без чувствительных данных и попросите maintainer предоставить приватный канал связи.
 
-Include the affected component and version, impact, reproduction steps, prerequisites, and suggested
-mitigation. Receipt should be acknowledged within 72 hours. Public disclosure is coordinated after a fix
-and affected-user guidance are available.
+Укажите затронутый компонент и версию, влияние, шаги воспроизведения, prerequisites и предлагаемое
+смягчение. Получение сообщения подтверждается в течение 72 часов. Публичное раскрытие координируется
+после выпуска исправления и инструкций для затронутых пользователей.
 
-## Supported versions
+## Поддерживаемые версии
 
-The latest release and the current default branch are supported until a formal support matrix is published.
+Последний релиз и текущая default branch поддерживаются до публикации формальной матрицы поддержки.
 
-## Security invariants
+## Инварианты безопасности
 
-- Secrets live in a secret manager and never in Git, CI logs, events, or images.
-- High-risk actions require immutable payload approval and step-up authentication.
-- Providers receive the minimum OAuth scopes needed for an action.
-- Every changing operation is attributable, idempotent, and auditable.
-- Production images are built in CI, scanned, accompanied by an SBOM, and identified by digest.
-
+- Секреты хранятся в secret manager и никогда не попадают в Git, логи CI, события или образы.
+- Для высокорисковых действий нужны подтверждение неизменяемого payload и step-up authentication.
+- Провайдеры получают минимальные OAuth scopes, необходимые для действия.
+- Каждая изменяющая операция имеет автора, идемпотентна и подлежит аудиту.
+- Production-образы собираются в CI, сканируются, сопровождаются SBOM и идентифицируются digest.

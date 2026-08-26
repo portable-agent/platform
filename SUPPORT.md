@@ -1,9 +1,8 @@
-# Support
+# Поддержка
 
-- Use GitHub Discussions for questions, design exploration, and integration help.
-- Use an issue for a reproducible defect or an accepted work item.
-- Use Private Vulnerability Reporting for security concerns.
+- Используйте GitHub Discussions для вопросов, обсуждения дизайна и помощи с интеграцией.
+- Создавайте issue для воспроизводимого дефекта или согласованной задачи.
+- Для вопросов безопасности используйте Private Vulnerability Reporting.
 
-Do not post credentials, personal data, production conversations, or unredacted logs in any channel.
-This community project does not currently provide a response-time SLA.
-
+Не публикуйте credentials, персональные данные, production-диалоги или неотредактированные логи ни в одном
+канале. Сейчас этот общественный проект не предоставляет SLA по времени ответа.
