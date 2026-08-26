@@ -1,0 +1,43 @@
+version: 1
+services:
+  - name: channel-gateway
+    repository: portable-agent-channel-gateway
+    owner: platform
+    runtime: java
+    phase: 1
+  - name: conversation-service
+    repository: portable-agent-conversation-service
+    owner: core
+    runtime: java
+    phase: 1
+  - name: agent-service
+    repository: portable-agent-agent-service
+    owner: intelligence
+    runtime: java
+    phase: 1
+  - name: action-service
+    repository: portable-agent-action-service
+    owner: core
+    runtime: java
+    phase: 1
+  - name: policy-service
+    repository: portable-agent-policy-service
+    owner: trust
+    runtime: java
+    phase: 1
+  - name: mcp-gateway
+    repository: portable-agent-mcp-gateway
+    owner: integrations
+    runtime: java
+    phase: 1
+  - name: calendar-mcp
+    repository: portable-agent-calendar-mcp
+    owner: integrations
+    runtime: java
+    phase: 1
+  - name: widget-sdk
+    repository: portable-agent-widget-sdk
+    owner: experience
+    runtime: typescript
+    phase: 1
+
