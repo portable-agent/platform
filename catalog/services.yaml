@@ -3,41 +3,71 @@ services:
   - name: channel-gateway
     repository: portable-agent-channel-gateway
     owner: platform
-    runtime: java
+    runtime: typescript
+    framework: fastify
+    phase: 1
+  - name: telegram-adapter
+    repository: portable-agent-telegram-adapter
+    owner: experience
+    runtime: typescript
     phase: 1
   - name: conversation-service
     repository: portable-agent-conversation-service
     owner: core
     runtime: java
+    framework: spring-boot
     phase: 1
-  - name: agent-service
-    repository: portable-agent-agent-service
+  - name: agent-runtime
+    repository: portable-agent-agent-runtime
     owner: intelligence
-    runtime: java
+    runtime: python
+    framework: fastapi
     phase: 1
   - name: action-service
     repository: portable-agent-action-service
     owner: core
     runtime: java
+    framework: spring-boot-temporal
     phase: 1
-  - name: policy-service
-    repository: portable-agent-policy-service
+  - name: approval-service
+    repository: portable-agent-approval-service
     owner: trust
     runtime: java
+    framework: spring-boot
+    phase: 1
+  - name: policy-bundle
+    repository: portable-agent-policy-bundle
+    owner: trust
+    runtime: rego
     phase: 1
   - name: mcp-gateway
     repository: portable-agent-mcp-gateway
     owner: integrations
-    runtime: java
+    runtime: typescript
+    framework: mcp-sdk
     phase: 1
   - name: calendar-mcp
     repository: portable-agent-calendar-mcp
     owner: integrations
-    runtime: java
+    runtime: typescript
+    framework: mcp-sdk
     phase: 1
   - name: widget-sdk
     repository: portable-agent-widget-sdk
     owner: experience
     runtime: typescript
+    framework: react
     phase: 1
+  - name: connection-service
+    repository: portable-agent-connection-service
+    owner: trust
+    runtime: java
+    framework: spring-boot
+    phase: 2
+  - name: audit-service
+    repository: portable-agent-audit-service
+    owner: trust
+    runtime: java
+    framework: spring-boot
+    phase: 2
 

@@ -8,6 +8,8 @@
 tmp/
 dist/
 build/
+node_modules/
+.docusaurus/
+.cache-loader/
 .DS_Store
 Thumbs.db
-

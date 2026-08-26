@@ -1,36 +1,40 @@
 # Portable Agent Platform
 
-Платформа переносимого персонального AI-агента: пользователь формулирует намерение голосом или текстом,
-проверяет предложенное действие в виджете и безопасно выполняет его в подключённых сервисах через MCP.
+An open-source platform for a portable personal AI agent. A user expresses an intent by voice or text,
+reviews a deterministic action in a channel-independent widget, and safely executes it through MCP tools.
 
-Это отдельный продукт. Он не является продолжением репозитория `planner` и не зависит от него.
+This is a standalone product. It is not related to the existing `planner` repository.
 
-## Роль репозитория
+[Русская версия](README.ru.md)
 
-Этот репозиторий хранит платформенную архитектуру, каталог микросервисов, межсервисные контракты,
-локальное окружение, GitOps-конфигурацию и общие правила разработки. Код сервисов будет находиться в
-отдельных репозиториях и выпускаться независимо.
+## Repository role
 
-## Первый вертикальный сценарий
+This repository is the platform control plane: architecture, cross-service contracts, service catalog,
+developer documentation, GitOps configuration, and organization-wide engineering standards. Every
+deployable service lives in its own GitHub repository, owns its data, and has an independent pipeline.
+
+It is deliberately not a monorepo and does not contain service implementation modules.
+
+## First vertical slice
 
 ```text
-Telegram voice
-  -> Channel Gateway
-  -> Speech-to-Text
-  -> Conversation Service
-  -> Agent Service
-  -> Action Proposed
-  -> Policy + Approval Widget
-  -> MCP Gateway
-  -> Calendar MCP
-  -> Action Completed
+Telegram voice -> STT -> Conversation -> Agent -> Proposed action
+               -> Policy -> Confirmation widget -> Durable workflow
+               -> MCP Gateway -> Calendar -> Result + audit trail
 ```
 
-## Документация
+## Architecture
 
-- [Целевая архитектура](docs/architecture/PLATFORM.md)
-- [Каталог сервисов](catalog/services.yaml)
-- [Порядок поставки](docs/delivery/ROADMAP.md)
-- [ADR: polyrepo](docs/adr/0001-polyrepo.md)
-- [ADR: event-driven workflows](docs/adr/0002-event-driven-workflows.md)
+- [Platform architecture](docs/architecture/PLATFORM.md)
+- [Action execution sequence](docs/architecture/ACTION_EXECUTION.md)
+- [Technology strategy](docs/architecture/TECHNOLOGY_STRATEGY.md)
+- [Repository and organization model](docs/architecture/REPOSITORY_MODEL.md)
+- [Service catalog](catalog/services.yaml)
+- [Delivery roadmap](docs/delivery/ROADMAP.md)
+- [Architecture decision records](docs/adr/)
 
+## Open-source project
+
+Portable Agent Platform is licensed under Apache License 2.0. Read the
+[contribution guide](CONTRIBUTING.md), [governance model](GOVERNANCE.md),
+[code of conduct](CODE_OF_CONDUCT.md), and [security policy](SECURITY.md) before contributing.

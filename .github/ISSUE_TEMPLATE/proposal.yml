@@ -1,0 +1,27 @@
+name: Proposal
+description: Propose a product, architecture, or platform change
+title: "proposal: "
+labels: [proposal, triage]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: Describe the user or maintainer problem without prescribing a solution.
+    validations:
+      required: true
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Desired outcome
+    validations:
+      required: true
+  - type: textarea
+    id: options
+    attributes:
+      label: Options and trade-offs
+  - type: textarea
+    id: compatibility
+    attributes:
+      label: Compatibility and operational impact
+

@@ -1,14 +1,13 @@
-# ADR-0002: Event-driven workflows и Saga
+# ADR-0002: Events and durable workflows
 
-- Статус: принято
-- Дата: 2026-08-26
+- Status: superseded in part by ADR-0004
+- Date: 2026-08-26
 
-## Решение
+## Decision
 
-Долгие пользовательские действия моделируются Saga в Action Service. Kafka переносит domain events,
-transactional outbox обеспечивает атомарность локального состояния и публикации, inbox защищает
-consumers от повторной обработки.
+Kafka carries domain and integration events. Producers use transactional outbox and consumers implement
+inbox deduplication. Long-running action orchestration is delegated to Temporal as defined by ADR-0004.
 
-HTTP используется только там, где вызывающей стороне нужен немедленный ответ. Распределённые транзакции
-и синхронные цепочки из нескольких сервисов не применяются.
+HTTP is reserved for short operations that require an immediate response. Distributed database
+transactions and long synchronous service chains are prohibited.
 
