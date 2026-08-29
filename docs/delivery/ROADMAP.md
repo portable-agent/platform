@@ -2,6 +2,8 @@
 
 ## Фаза 0 — Основа платформы
 
+Состояние: в работе. Организация и первые пять репозиториев созданы; общие правила и каркасы настраиваются.
+
 - GitHub Organization, Teams, CODEOWNERS, защищённые ветки и rulesets репозиториев.
 - Переиспользуемый CI для Java, Python, TypeScript, контейнеров, политик и контрактов.
 - Публикация в GHCR с SBOM, provenance, attestations и vulnerability gates.

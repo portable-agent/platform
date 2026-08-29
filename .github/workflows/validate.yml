@@ -27,6 +27,9 @@ jobs:
           Get-ChildItem -Recurse -Filter *.json | ForEach-Object {
             Get-Content -Raw $_.FullName | ConvertFrom-Json | Out-Null
           }
+      - name: Проверить обязательную документацию
+        shell: pwsh
+        run: ./scripts/check-docs.ps1
       - name: Scan repository
         uses: aquasecurity/trivy-action@v0.36.0
         with:
