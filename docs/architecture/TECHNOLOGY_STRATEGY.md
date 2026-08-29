@@ -5,7 +5,7 @@ Portable Agent полиглотен по замыслу, но не случай�
 
 | Нагрузка | Технология | Причина |
 |---|---|---|
-| Транзакционное ядро | Java 25, Spring Boot 4 | Инструменты строгой согласованности, зрелая экосистема persistence и observability |
+| Транзакционное ядро | Java 25, Spring Boot 4, Spring MVC, jOOQ | Явный SQL, транзакции и простой поток controller → service → repository |
 | Durable workflows | Temporal Java SDK | Долгие действия, retries, timers, approvals, compensation и replay |
 | Agent runtime | Python, FastAPI, Pydantic | Сильная экосистема моделей, evaluation, retrieval и научных инструментов |
 | Каналы и BFF | TypeScript, Node.js | Быстрая адаптация API и общие типы с web-клиентами |
@@ -26,3 +26,5 @@ Portable Agent полиглотен по замыслу, но не случай�
 - Kubernetes до того, как локальные контейнеры и контракты станут надёжными.
 - Backstage как runtime-зависимости: это только портал разработчика и projection каталога.
 - Новой инфраструктуры без владельца, runbook, health signal и описанного failure mode.
+- JPA/Hibernate в Java-сервисах: для доступа к PostgreSQL используется jOOQ.
+- Сложных английских названий, когда короткое слово сохраняет смысл.

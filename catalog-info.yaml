@@ -3,15 +3,14 @@ kind: System
 metadata:
   name: portable-agent
   title: Portable Agent Platform
-  description: Portable personal AI agent and secure action execution platform
+  description: Архитектура и общая документация платформы Portable Agent
   annotations:
     backstage.io/techdocs-ref: dir:.
-    github.com/project-slug: DanliaQwerty20/portable-agent-platform
+    github.com/project-slug: portable-agent/platform
   tags:
     - ai-agent
     - mcp
     - temporal
 spec:
-  owner: group:default/platform
+  owner: group:default/maintainers
   domain: personal-agents
-

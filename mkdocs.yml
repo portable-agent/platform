@@ -1,0 +1,28 @@
+site_name: Portable Agent Platform
+site_description: Архитектура и правила разработки Portable Agent
+docs_dir: docs
+strict: true
+nav:
+  - Главная: index.md
+  - Архитектура:
+      - Платформа: architecture/PLATFORM.md
+      - Выполнение действия: architecture/ACTION_EXECUTION.md
+      - Репозитории: architecture/REPOSITORY_MODEL.md
+      - Технологии: architecture/TECHNOLOGY_STRATEGY.md
+  - Разработка: development.md
+  - Эксплуатация: runbook.md
+  - План:
+      - Дорожная карта: delivery/ROADMAP.md
+      - Инженерные пакеты: delivery/WORK_PLAN.md
+      - MVP на месяц, полгода и год: delivery/MVP_ROADMAP.md
+      - Тестовый полигон: delivery/TEST_PLATFORM.md
+  - ADR:
+      - Polyrepo: adr/0001-polyrepo.md
+      - События и workflows: adr/0002-event-driven-workflows.md
+      - Ограниченный polyglot: adr/0003-restrained-polyglot.md
+      - Temporal: adr/0004-temporal-for-actions.md
+      - Документация: adr/0005-documentation-platform.md
+      - jOOQ: adr/0006-jooq.md
+      - MVC и простые имена: adr/0007-simple-mvc-and-names.md
+      - TDD: adr/0008-tdd.md
+      - Владение документацией: adr/0009-documentation-owner.md

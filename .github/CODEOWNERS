@@ -1,5 +1,8 @@
-* @DanliaQwerty20
-/.github/ @DanliaQwerty20
-/contracts/ @DanliaQwerty20
-/docs/adr/ @DanliaQwerty20
-
+* @portable-agent/maintainers
+/.github/ @portable-agent/maintainers
+/catalog/ @portable-agent/maintainers @portable-agent/backend @portable-agent/agent-runtime
+/contracts/ @portable-agent/backend
+/docs/ @portable-agent/maintainers
+/docs/adr/ @portable-agent/maintainers
+/AGENTS.md @portable-agent/maintainers
+/catalog-info.yaml @portable-agent/maintainers
