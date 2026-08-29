@@ -16,6 +16,7 @@ Portable Agent — открытая платформа, превращающая
 - Изучите [архитектуру платформы](architecture/PLATFORM.md).
 - Проследите [последовательность выполнения действия](architecture/ACTION_EXECUTION.md).
 - Ознакомьтесь с [технологической стратегией](architecture/TECHNOLOGY_STRATEGY.md).
+- Проверяйте статус инструментов в [tech radar](architecture/TECH_RADAR.md).
 - Посмотрите [дорожную карту поставки](delivery/ROADMAP.md).
 - Следите за [пошаговым планом инженерных работ](delivery/WORK_PLAN.md).
 - Сверяйтесь с [планом MVP на месяц, полгода и год](delivery/MVP_ROADMAP.md).
@@ -25,5 +26,6 @@ Portable Agent — открытая платформа, превращающая
 
 ## Текущее состояние
 
-Созданы отдельные репозитории `.github`, `platform`, `contracts`, `action-service` и `agent-runtime`.
+Созданы отдельные репозитории `.github`, `platform`, `contracts`, `action-service`, `agent-runtime` и
+`deploy`.
 Сервисы пока являются каркасами: бизнес-процессы будут проектироваться отдельно с участием владельца продукта.

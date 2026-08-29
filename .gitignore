@@ -6,6 +6,7 @@
 !.env.example
 *.log
 tmp/
+.tmp-site/
 dist/
 build/
 node_modules/

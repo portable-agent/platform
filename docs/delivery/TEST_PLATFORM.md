@@ -14,11 +14,13 @@
 | `stage` | проверка релиз-кандидата | постоянно, похоже на production | обезличенные тестовые |
 | `prod` | реальные пользователи | после MVP | минимально необходимые |
 
-## Планируемые репозитории
+## Репозитории полигона
 
-- `deploy` — Helm charts, Argo CD applications и настройки окружений;
-- `infra` — OpenTofu modules, policy checks и тесты инфраструктуры;
-- `test-lab` — end-to-end, contract, k6 и chaos-сценарии.
+| Репозиторий | Что хранит | Состояние |
+|---|---|---|
+| [`deploy`](https://github.com/portable-agent/deploy) | Helm charts, позже Argo CD и настройки окружений | Создан; базовый chart проверен в k3d |
+| `infra` | OpenTofu modules, policy checks и тесты инфраструктуры | Запланирован |
+| `test-lab` | End-to-end, contract, k6 и chaos-сценарии | Запланирован |
 
 Создавать их нужно по одному. Первый pull request каждого репозитория обязан содержать README,
 `AGENTS.md`, владельца, CI и один работающий тест.
