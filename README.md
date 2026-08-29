@@ -21,6 +21,7 @@
 - [`contracts`](https://github.com/portable-agent/contracts) — OpenAPI, AsyncAPI и JSON Schema.
 - [`action-service`](https://github.com/portable-agent/action-service) — каркас Java-сервиса действий.
 - [`agent-runtime`](https://github.com/portable-agent/agent-runtime) — каркас Python-сервиса агента.
+- [`deploy`](https://github.com/portable-agent/deploy) — Helm charts и проверка установки в k3d.
 
 Текущий код сервисов — инженерный каркас. Правила бизнеса ещё не зафиксированы.
 
@@ -37,6 +38,7 @@ Telegram voice -> STT -> Conversation -> Agent -> Proposed action
 - [Архитектура платформы](docs/architecture/PLATFORM.md)
 - [Последовательность выполнения действия](docs/architecture/ACTION_EXECUTION.md)
 - [Технологическая стратегия](docs/architecture/TECHNOLOGY_STRATEGY.md)
+- [Tech radar](docs/architecture/TECH_RADAR.md)
 - [Модель репозиториев и организации](docs/architecture/REPOSITORY_MODEL.md)
 - [Правила разработки](docs/development.md)
 - [Диагностика документации](docs/runbook.md)
