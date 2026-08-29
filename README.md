@@ -43,6 +43,8 @@ Telegram voice -> STT -> Conversation -> Agent -> Proposed action
 - [Каталог сервисов](catalog/services.yaml)
 - [Дорожная карта поставки](docs/delivery/ROADMAP.md)
 - [Пошаговый план инженерных работ](docs/delivery/WORK_PLAN.md)
+- [План MVP: месяц, полгода и год](docs/delivery/MVP_ROADMAP.md)
+- [Полигон тестирования и масштабирования](docs/delivery/TEST_PLATFORM.md)
 - [Записи архитектурных решений](docs/adr/)
 
 ## Открытый проект

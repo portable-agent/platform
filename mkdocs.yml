@@ -11,7 +11,11 @@ nav:
       - Технологии: architecture/TECHNOLOGY_STRATEGY.md
   - Разработка: development.md
   - Эксплуатация: runbook.md
-  - Дорожная карта: delivery/ROADMAP.md
+  - План:
+      - Дорожная карта: delivery/ROADMAP.md
+      - Инженерные пакеты: delivery/WORK_PLAN.md
+      - MVP на месяц, полгода и год: delivery/MVP_ROADMAP.md
+      - Тестовый полигон: delivery/TEST_PLATFORM.md
   - ADR:
       - Polyrepo: adr/0001-polyrepo.md
       - События и workflows: adr/0002-event-driven-workflows.md
