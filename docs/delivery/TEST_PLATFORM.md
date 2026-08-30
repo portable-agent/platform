@@ -18,12 +18,12 @@
 
 | Репозиторий | Что хранит | Состояние |
 |---|---|---|
-| [`deploy`](https://github.com/portable-agent/deploy) | Helm charts, позже Argo CD и настройки окружений | Создан; базовый chart проверен в k3d |
-| [`infra`](https://github.com/portable-agent/infra) | OpenTofu modules, policy checks и тесты инфраструктуры | Создан; первый module test проходит в CI |
-| `test-lab` | End-to-end, contract, k6 и chaos-сценарии | Запланирован |
+| [`deploy`](https://github.com/portable-agent/deploy) | Compose, общий Helm chart, Argo CD и окружения | Реализуется в PR платформы разработки |
+| [`infra`](https://github.com/portable-agent/infra) | OpenTofu modules и фабрика GitHub-реп | Реализуется в PR платформы разработки |
+| [`test-lab`](https://github.com/portable-agent/test-lab) | k6 и защищённые chaos-сценарии | Репозиторий создан; первый пакет готовится |
 
-Создавать их нужно по одному. Первый pull request каждого репозитория обязан содержать README,
-`AGENTS.md`, владельца, CI и один работающий тест.
+Первый pull request каждого репозитория обязан содержать README, `AGENTS.md`, владельца, CI и один
+работающий тест. Технические gates не являются production SLO.
 
 ## Пирамида проверок
 

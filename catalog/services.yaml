@@ -1,5 +1,11 @@
 version: 1
 services:
+  - name: test-lab
+    repository: test-lab
+    status: foundation
+    owner: platform
+    runtime: k6
+    phase: 0
   - name: channel-gateway
     repository: channel-gateway
     status: planned
