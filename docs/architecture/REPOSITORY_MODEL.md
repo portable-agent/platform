@@ -12,6 +12,7 @@ Portable Agent использует GitHub Organization и отдельную р
 | `action-service` | Java-сервис действий | Создан, технический каркас переделывается на jOOQ и MVC |
 | `agent-runtime` | Python-сервис агента | Создан, технический каркас приводится к простой MVC-структуре |
 | `deploy` | Helm charts и тестовые Kubernetes-окружения | Создан, Helm chart проходит smoke-тест в k3d |
+| `infra` | OpenTofu modules и тесты инфраструктуры | Создан, первый module test проходит в CI |
 
 Каркас означает, что настроены структура и инженерные проверки. Это не означает, что правила бизнеса уже
 спроектированы или реализованы.
@@ -20,7 +21,6 @@ Portable Agent использует GitHub Organization и отдельную р
 
 ```text
 portable-agent organization
-├── infra                   OpenTofu и запуск инфраструктуры
 ├── test-lab                сквозные, нагрузочные и chaos-тесты
 ├── channel-gateway         единый вход для каналов
 ├── conversation-service    состояние диалога

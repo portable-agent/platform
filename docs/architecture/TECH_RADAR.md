@@ -19,7 +19,7 @@ Tech radar показывает, насколько технология уже 
 | Helm | `trial` | Chart проходит strict lint, render и установку в k3d | Установить первый fake-сервис |
 | k3d | `trial` | CI создаёт одноразовый кластер, проверяет chart и удаляет кластер | Проверить полный локальный профиль |
 | Argo CD | `assess` | Есть задача GitOps-доставки | ADR и тест одной application |
-| OpenTofu | `assess` | Есть задача воспроизводимой инфраструктуры | Первый module test в репозитории `infra` |
+| OpenTofu | `trial` | Модуль проходит fmt, validate и `tofu test` без cloud credentials | Проверить первый реальный provider |
 | OpenTelemetry Collector | `assess` | Выбран единый вход telemetry | Показать один trace в локальном окружении |
 | k6 | `assess` | Записана лестница нагрузки | Первый smoke-тест в `test-lab` |
 | Chaos Mesh | `hold` | Записаны безопасные границы экспериментов | Вернуться после рабочего k3d-профиля |
@@ -27,3 +27,7 @@ Tech radar показывает, насколько технология уже 
 Доказательство для Helm и k3d находится в репозитории
 [`portable-agent/deploy`](https://github.com/portable-agent/deploy). Решение о границе этого репозитория
 описано в его ADR `docs/decisions/0001-deploy-repository.md`.
+
+Доказательство для OpenTofu находится в репозитории
+[`portable-agent/infra`](https://github.com/portable-agent/infra). Первый test проверяет стабильное имя
+ресурса без доступа к cloud provider.

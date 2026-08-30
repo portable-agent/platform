@@ -19,7 +19,7 @@
 | Репозиторий | Что хранит | Состояние |
 |---|---|---|
 | [`deploy`](https://github.com/portable-agent/deploy) | Helm charts, позже Argo CD и настройки окружений | Создан; базовый chart проверен в k3d |
-| `infra` | OpenTofu modules, policy checks и тесты инфраструктуры | Запланирован |
+| [`infra`](https://github.com/portable-agent/infra) | OpenTofu modules, policy checks и тесты инфраструктуры | Создан; первый module test проходит в CI |
 | `test-lab` | End-to-end, contract, k6 и chaos-сценарии | Запланирован |
 
 Создавать их нужно по одному. Первый pull request каждого репозитория обязан содержать README,
