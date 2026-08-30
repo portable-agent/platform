@@ -26,6 +26,6 @@ Portable Agent — открытая платформа, превращающая
 
 ## Текущее состояние
 
-Созданы отдельные репозитории `.github`, `platform`, `contracts`, `action-service`, `agent-runtime` и
-`deploy`.
+Созданы отдельные репозитории `.github`, `platform`, `contracts`, `action-service`, `agent-runtime`,
+`deploy` и `infra`.
 Сервисы пока являются каркасами: бизнес-процессы будут проектироваться отдельно с участием владельца продукта.

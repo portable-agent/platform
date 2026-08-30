@@ -22,6 +22,7 @@
 - [`action-service`](https://github.com/portable-agent/action-service) — каркас Java-сервиса действий.
 - [`agent-runtime`](https://github.com/portable-agent/agent-runtime) — каркас Python-сервиса агента.
 - [`deploy`](https://github.com/portable-agent/deploy) — Helm charts и проверка установки в k3d.
+- [`infra`](https://github.com/portable-agent/infra) — OpenTofu modules и тесты инфраструктуры.
 
 Текущий код сервисов — инженерный каркас. Правила бизнеса ещё не зафиксированы.
 
