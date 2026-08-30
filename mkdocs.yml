@@ -11,6 +11,8 @@ nav:
       - Платформа разработчика: architecture/DEVELOPER_PLATFORM.md
       - Технологии: architecture/TECHNOLOGY_STRATEGY.md
       - Tech radar: architecture/TECH_RADAR.md
+  - Продукт:
+      - MVP создания встречи: product/CALENDAR_EVENT_MVP.md
   - Разработка: development.md
   - Эксплуатация: runbook.md
   - План:
