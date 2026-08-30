@@ -23,6 +23,7 @@
 - [`agent-runtime`](https://github.com/portable-agent/agent-runtime) — каркас Python-сервиса агента.
 - [`deploy`](https://github.com/portable-agent/deploy) — Helm charts и проверка установки в k3d.
 - [`infra`](https://github.com/portable-agent/infra) — OpenTofu modules и тесты инфраструктуры.
+- [`test-lab`](https://github.com/portable-agent/test-lab) — системные, нагрузочные и resilience-тесты.
 
 Текущий код сервисов — инженерный каркас. Правила бизнеса ещё не зафиксированы.
 
@@ -41,6 +42,7 @@ Telegram voice -> STT -> Conversation -> Agent -> Proposed action
 - [Технологическая стратегия](docs/architecture/TECHNOLOGY_STRATEGY.md)
 - [Tech radar](docs/architecture/TECH_RADAR.md)
 - [Модель репозиториев и организации](docs/architecture/REPOSITORY_MODEL.md)
+- [Платформа разработчика](docs/architecture/DEVELOPER_PLATFORM.md)
 - [Правила разработки](docs/development.md)
 - [Диагностика документации](docs/runbook.md)
 - [Каталог сервисов](catalog/services.yaml)
