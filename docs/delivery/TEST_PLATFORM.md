@@ -109,11 +109,14 @@ Chaos Mesh включается только в namespace с явным разр
 - unit/integration/contract тесты зелёные;
 - docs собираются в strict mode;
 - нет Critical/High уязвимостей без принятого исключения;
-- image имеет SBOM и подпись;
+- локально собранный image проходит Trivy без публикации;
 - smoke end-to-end зелёный;
 - preview environment становится Healthy;
 - p95 и error rate не хуже принятого baseline больше установленного допуска;
 - новые публичные контракты имеют migration note.
+
+После изменения `main` publish gate проверяет публикацию image в GHCR, SBOM, максимальный provenance,
+GitHub attestation и keyless-подпись Cosign.
 
 Целевые инженерные времена: CI до 10 минут, preview environment до 15 минут, локальный быстрый запуск
 до 10 минут. Сначала измеряем, затем оптимизируем.

@@ -31,3 +31,4 @@ nav:
       - TDD: adr/0008-tdd.md
       - Владение документацией: adr/0009-documentation-owner.md
       - Платформа разработки: adr/0010-developer-platform.md
+      - Режимы container CI: adr/0011-container-ci-modes.md
