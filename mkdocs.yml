@@ -32,3 +32,4 @@ nav:
       - Владение документацией: adr/0009-documentation-owner.md
       - Платформа разработки: adr/0010-developer-platform.md
       - Режимы container CI: adr/0011-container-ci-modes.md
+      - Contract-first: adr/0012-contract-first.md

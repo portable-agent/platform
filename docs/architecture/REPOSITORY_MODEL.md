@@ -40,5 +40,7 @@ portable-agent organization
 - Общие workflows задают одинаковые проверки, но каждая репа вызывает их явно.
 - GitOps использует готовые image digests и не собирает application code.
 - Сервисы не делят общие доменные классы.
-- Межсервисные границы описываются в `contracts` и проверяются consumer tests.
+- Межсервисные границы описываются в `contracts`, выпускаются версионным bundle и проверяются consumer
+  tests.
+- Сервисы генерируют только HTTP models и API interfaces; domain остаётся внутри сервиса.
 - README и AGENTS.md обновляются вместе с изменением ответственности или команд.

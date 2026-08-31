@@ -44,7 +44,8 @@
 
 ### 3. Java-каркас `action-service`
 
-- обычные MVC-папки: `controller`, `service`, `repository`, `model`, `dto`, `config`, `exception`;
+- обычные MVC-папки: `controller`, `service`, `repository`, `model`, `config`, `exception`;
+- HTTP interface и models создаются из закреплённой версии OpenAPI только в `build/`;
 - jOOQ и SQL migrations, без JPA и Hibernate;
 - unit-тесты сервиса и интеграционные тесты PostgreSQL через Testcontainers;
 - Checkstyle/Spotless и строгая сборка MkDocs;
@@ -52,8 +53,11 @@
 
 ### 4. Контракты и документация
 
+Состояние: contract-first в работе.
+
 - единый README, `AGENTS.md`, MkDocs/TechDocs и `catalog-info.yaml`;
 - OpenAPI, AsyncAPI и JSON Schema проверяются автоматически;
+- SemVer release bundle, `oasdiff` и generated API для реальных потребителей;
 - общие решения хранятся как ADR в `platform`;
 - описание каждого репозитория отражает только уже существующий код.
 
