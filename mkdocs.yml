@@ -19,6 +19,7 @@ nav:
       - Дорожная карта: delivery/ROADMAP.md
       - Инженерные пакеты: delivery/WORK_PLAN.md
       - MVP на месяц, полгода и год: delivery/MVP_ROADMAP.md
+      - Текущее состояние: delivery/CURRENT_STATUS.md
       - Тестовый полигон: delivery/TEST_PLATFORM.md
   - ADR:
       - Polyrepo: adr/0001-polyrepo.md
