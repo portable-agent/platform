@@ -1,4 +1,5 @@
 allowBuilds:
   core-js: true
 overrides:
+  js-yaml: 4.3.2
   serialize-javascript: 7.0.3
