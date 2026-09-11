@@ -35,7 +35,7 @@ services:
     phase: 1
   - name: action-service
     repository: action-service
-    status: scaffold
+    status: lifecycle-ready
     owner: core
     runtime: java
     framework: spring-boot-temporal
@@ -55,17 +55,17 @@ services:
     phase: 1
   - name: mcp-gateway
     repository: mcp-gateway
-    status: planned
+    status: foundation
     owner: integrations
     runtime: typescript
     framework: mcp-sdk
     phase: 1
   - name: calendar-mcp
     repository: calendar-mcp
-    status: planned
+    status: working
     owner: integrations
-    runtime: typescript
-    framework: mcp-sdk
+    runtime: python
+    framework: fastapi-mcp-sdk
     phase: 1
   - name: widget-sdk
     repository: widget-sdk

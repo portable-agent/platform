@@ -24,6 +24,8 @@
 - [`deploy`](https://github.com/portable-agent/deploy) — Helm charts и проверка установки в k3d.
 - [`infra`](https://github.com/portable-agent/infra) — OpenTofu modules и тесты инфраструктуры.
 - [`test-lab`](https://github.com/portable-agent/test-lab) — системные, нагрузочные и resilience-тесты.
+- [`calendar-mcp`](https://github.com/portable-agent/calendar-mcp) — MCP-сервис календаря с fake-провайдером.
+- [`mcp-gateway`](https://github.com/portable-agent/mcp-gateway) — безопасная маршрутизация вызовов MCP.
 
 Текущий код сервисов — инженерный каркас. Правила бизнеса ещё не зафиксированы.
 
@@ -49,6 +51,7 @@ Telegram voice -> STT -> Conversation -> Agent -> Proposed action
 - [Дорожная карта поставки](docs/delivery/ROADMAP.md)
 - [Пошаговый план инженерных работ](docs/delivery/WORK_PLAN.md)
 - [План MVP: месяц, полгода и год](docs/delivery/MVP_ROADMAP.md)
+- [Текущее состояние по репозиториям](docs/delivery/CURRENT_STATUS.md)
 - [Полигон тестирования и масштабирования](docs/delivery/TEST_PLATFORM.md)
 - [Записи архитектурных решений](docs/adr/)
 

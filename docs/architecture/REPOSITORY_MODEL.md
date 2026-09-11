@@ -13,6 +13,9 @@ Portable Agent использует GitHub Organization и отдельную р
 | `agent-runtime` | Python-сервис агента | Создан, технический каркас приводится к простой MVC-структуре |
 | `deploy` | Helm charts и тестовые Kubernetes-окружения | Создан, Helm chart проходит smoke-тест в k3d |
 | `infra` | OpenTofu modules и тесты инфраструктуры | Создан, первый module test проходит в CI |
+| `test-lab` | Сквозные, нагрузочные и resilience-тесты | Создан, тестовый фундамент готов |
+| `calendar-mcp` | MCP-интеграция календаря | Создан, fake-calendar, OIDC и идемпотентность работают |
+| `mcp-gateway` | Безопасный вызов настроенных MCP-сервисов | Создан, foundation готовится к первому PR |
 
 Каркас означает, что настроены структура и инженерные проверки. Это не означает, что правила бизнеса уже
 спроектированы или реализованы.
@@ -21,13 +24,10 @@ Portable Agent использует GitHub Organization и отдельную р
 
 ```text
 portable-agent organization
-├── test-lab                сквозные, нагрузочные и chaos-тесты
 ├── channel-gateway         единый вход для каналов
 ├── conversation-service    состояние диалога
 ├── approval-service        подтверждение действий
 ├── policy-bundle           правила OPA
-├── mcp-gateway             безопасный вызов MCP
-├── calendar-mcp            интеграция с календарём
 └── widget-sdk              переносимые виджеты
 ```
 
