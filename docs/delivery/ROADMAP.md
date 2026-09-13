@@ -17,8 +17,8 @@
 
 ## Фаза 1 — Первый вертикальный срез
 
-Состояние: backend-путь от текста до fake-календаря готов. Следующий пакет — независимый от канала
-входной API, затем Widget SDK и первый адаптер.
+Состояние: backend-путь от независимого Channel Gateway до fake-календаря готов. Следующий пакет —
+контракт карточки подтверждения, Widget SDK и первый адаптер.
 
 - Channel Gateway и Telegram adapter.
 - Conversation Service и Agent Runtime.

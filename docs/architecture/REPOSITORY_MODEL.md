@@ -16,6 +16,7 @@ Portable Agent использует GitHub Organization и отдельную р
 | `test-lab` | Сквозные, нагрузочные и resilience-тесты | Контрактный календарный acceptance-тест готов |
 | `calendar-mcp` | MCP-интеграция календаря | Fake Calendar, OIDC и идемпотентность работают в общем сценарии |
 | `mcp-gateway` | Безопасный вызов настроенных MCP-сервисов | Stateless-маршрутизатор работает между Action и Calendar MCP |
+| `channel-gateway` | Единый вход независимых каналов | Текстовый API, JWT и вызов Agent Runtime работают в общем сценарии |
 
 Каркас означает, что настроены структура и инженерные проверки. Это не означает, что правила бизнеса уже
 спроектированы или реализованы.
@@ -24,7 +25,6 @@ Portable Agent использует GitHub Organization и отдельную р
 
 ```text
 portable-agent organization
-├── channel-gateway         единый вход для каналов
 ├── conversation-service    состояние диалога
 ├── approval-service        подтверждение действий
 ├── policy-bundle           правила OPA
