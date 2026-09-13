@@ -2,7 +2,7 @@ version: 1
 services:
   - name: test-lab
     repository: test-lab
-    status: foundation
+    status: acceptance-ready
     owner: platform
     runtime: k6
     phase: 0
@@ -28,14 +28,14 @@ services:
     phase: 1
   - name: agent-runtime
     repository: agent-runtime
-    status: scaffold
+    status: backend-slice-ready
     owner: intelligence
     runtime: python
     framework: fastapi
     phase: 1
   - name: action-service
     repository: action-service
-    status: lifecycle-ready
+    status: execution-ready
     owner: core
     runtime: java
     framework: spring-boot-temporal
@@ -55,7 +55,7 @@ services:
     phase: 1
   - name: mcp-gateway
     repository: mcp-gateway
-    status: foundation
+    status: working
     owner: integrations
     runtime: typescript
     framework: mcp-sdk
