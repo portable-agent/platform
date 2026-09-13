@@ -1,32 +1,48 @@
 # Текущее состояние по репозиториям
 
-Дата среза: 10 сентября 2026 года. Этот файл обновляется после мержа этапа, а не после локального
+Дата среза: 14 сентября 2026 года. Этот файл обновляется после мержа этапа, а не после локального
 эксперимента.
 
 | Репа | Что меняем или добавляем | Ожидаемый результат | Фактический результат | Следующий шаг |
 |---|---|---|---|---|
-| `.github` | Общие workflows и правила | Одинаковый CI/CD для всех сервисов | Java, Python, Node, docs, security и container workflows готовы | Подключить ruleset новой репы |
-| `contracts` | MCP Gateway API `1.2.0` | Проверяемый контракт worker → gateway | Ветка и тесты готовы, PR ещё не смержен | Смержить и выпустить `1.2.0` |
-| `action-service` | Lifecycle и Temporal worker | `APPROVED → EXECUTING → SUCCEEDED/FAILED` | Lifecycle смержен, полного worker ещё нет | Вызвать MCP Gateway из workflow |
-| `calendar-mcp` | `create_event` | Идемпотентное создание fake-события | MCP, OIDC и fake-calendar работают | Подключить в общий E2E |
-| `mcp-gateway` | OIDC, allowlist и MCP client | Безопасный stateless-маршрутизатор | Репа создана; локальные тесты и Docker зелёные; PR ещё не смержен | Смержить foundation |
-| `deploy` | Gateway и worker в Compose/Helm | Одна команда поднимает вертикальный срез | Базовая платформа работает без gateway | Добавить chart и config gateway |
-| `test-lab` | Полный календарный acceptance-тест | Повтор запроса не создаёт дубль | Есть тестовый фундамент | Пройти путь через Temporal и gateway |
-| `agent-runtime` | Разбор команды в action | Детерминированное предложение встречи | Пока технический каркас | Начать после backend E2E |
-| `channel-gateway` | Общий вход каналов | Web и Telegram используют один контракт | Репа не создана | После backend E2E |
-| `widget-sdk` | Карточка подтверждения | Один UI-контракт для разных каналов | Репа не создана | После Channel Gateway |
+| `.github` | Общие workflows и правила | Одинаковый CI/CD для всех сервисов | Java, Python, Node, docs, security и container workflows работают | Подключать правила к каждой новой репе |
+| `contracts` | Версионируемые внешние и внутренние API | Один проверяемый источник сетевых DTO | Bundle `2.1.0` выпущен; Agent, Action и MCP Gateway берут схемы из него | Сначала описать API Channel Gateway |
+| `action-service` | Подтверждение и надёжное выполнение | `AWAITING_APPROVAL → APPROVED → EXECUTING → SUCCEEDED/FAILED` | jOOQ, outbox, Temporal worker и вызов MCP Gateway работают; backend acceptance зелёный | Принимать команду через Channel Gateway |
+| `calendar-mcp` | `create_event` | Идемпотентное создание fake-события | Fake Calendar, OIDC и защита от дублей работают в общем сценарии | Оставить эталонным fake-коннектором |
+| `mcp-gateway` | OIDC, allowlist и MCP client | Безопасный stateless-маршрутизатор | Foundation смержен и проверен вызовом Calendar MCP | Добавлять коннекторы только по контракту |
+| `deploy` | Приложения в локальном Compose | Одна команда поднимает вертикальный backend-срез | Agent, Action, Temporal, Gateway и Calendar поднимаются; GitHub smoke зелёный | Ускорить сборку и добавить следующий входной сервис |
+| `test-lab` | Календарный acceptance-тест | Один JWT и один контракт на всём пути | Схема Agent `2.1.0`, подтверждение и проверка часового пояса работают | Добавить повтор запроса и проверку отсутствия дубля |
+| `agent-runtime` | Текст в предложение действия | Детерминированное предложение встречи без скрытого выполнения | API `2.1.0`, проверка JWT и календарное предложение работают в общем сценарии | Вызывать через Channel Gateway, AI-модель пока не выбирать |
+| `channel-gateway` | Общий вход каналов | Web и Telegram используют один контракт | Репа ещё не создана | Спроектировать минимальный API и создать репу |
+| `widget-sdk` | Карточка подтверждения | Один UI-контракт для разных каналов | Репа ещё не создана | Начать после API Channel Gateway |
+
+## Что уже проверено
+
+```text
+русский текст
+    -> Agent Runtime
+    -> предложение calendar.create_event
+    -> Action Service и явное подтверждение
+    -> Temporal workflow
+    -> MCP Gateway
+    -> Calendar MCP
+    -> fake-событие без изменения исходного +03:00
+```
+
+Проверка запускает реальные контейнеры отдельных репозиториев по закреплённым commit SHA. Последний
+зелёный запуск вошёл в `deploy` через merge `b931cc6`.
 
 ## Текущий порядок
 
 ```text
-contracts 1.2.0
-    -> mcp-gateway foundation
-    -> action-service Temporal worker
-    -> deploy
-    -> test-lab E2E
-    -> channel-gateway
-    -> widget-sdk
-    -> telegram-adapter
+[готово] contracts 2.1.0
+    -> [готово] MCP Gateway и Calendar MCP
+    -> [готово] Action Service и Temporal worker
+    -> [готово] Agent Runtime в общем Compose
+    -> [готово] backend acceptance
+    -> [следом] Channel Gateway API и репа
+    -> Widget SDK
+    -> Telegram adapter
 ```
 
 ## Правило результата

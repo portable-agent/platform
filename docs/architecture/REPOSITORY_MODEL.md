@@ -8,14 +8,14 @@ Portable Agent использует GitHub Organization и отдельную р
 |---|---|---|
 | `.github` | Общие шаблоны, правила и CI/CD | Создан, развивается |
 | `platform` | Архитектура, ADR, карта и публичная документация | Создан, сайт опубликован |
-| `contracts` | OpenAPI, AsyncAPI, JSON Schema и примеры | Создан, каркас готов |
-| `action-service` | Java-сервис действий | Создан, технический каркас переделывается на jOOQ и MVC |
-| `agent-runtime` | Python-сервис агента | Создан, технический каркас приводится к простой MVC-структуре |
-| `deploy` | Helm charts и тестовые Kubernetes-окружения | Создан, Helm chart проходит smoke-тест в k3d |
+| `contracts` | OpenAPI, AsyncAPI, JSON Schema и примеры | Bundle `2.1.0` выпущен и используется сервисами |
+| `action-service` | Java-сервис действий | jOOQ, MVC, outbox и Temporal worker работают в backend-срезе |
+| `agent-runtime` | Python-сервис агента | MVC, JWT и предложение календарного действия работают в backend-срезе |
+| `deploy` | Compose, Helm charts и тестовые окружения | Локальный backend-срез и GitHub acceptance проходят одной командой |
 | `infra` | OpenTofu modules и тесты инфраструктуры | Создан, первый module test проходит в CI |
-| `test-lab` | Сквозные, нагрузочные и resilience-тесты | Создан, тестовый фундамент готов |
-| `calendar-mcp` | MCP-интеграция календаря | Создан, fake-calendar, OIDC и идемпотентность работают |
-| `mcp-gateway` | Безопасный вызов настроенных MCP-сервисов | Создан, foundation готовится к первому PR |
+| `test-lab` | Сквозные, нагрузочные и resilience-тесты | Контрактный календарный acceptance-тест готов |
+| `calendar-mcp` | MCP-интеграция календаря | Fake Calendar, OIDC и идемпотентность работают в общем сценарии |
+| `mcp-gateway` | Безопасный вызов настроенных MCP-сервисов | Stateless-маршрутизатор работает между Action и Calendar MCP |
 
 Каркас означает, что настроены структура и инженерные проверки. Это не означает, что правила бизнеса уже
 спроектированы или реализованы.
