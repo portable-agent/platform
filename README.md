@@ -26,6 +26,7 @@
 - [`test-lab`](https://github.com/portable-agent/test-lab) — системные, нагрузочные и resilience-тесты.
 - [`calendar-mcp`](https://github.com/portable-agent/calendar-mcp) — MCP-сервис календаря с fake-провайдером.
 - [`mcp-gateway`](https://github.com/portable-agent/mcp-gateway) — безопасная маршрутизация вызовов MCP.
+- [`channel-gateway`](https://github.com/portable-agent/channel-gateway) — единый вход Web, Telegram и других каналов.
 
 Первый backend-срез уже проверен: русский текст превращается в предложение, после явного подтверждения
 проходит через Temporal и создаёт событие в Fake Calendar. Входные каналы, виджеты и реальный календарь
