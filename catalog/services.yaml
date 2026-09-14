@@ -21,7 +21,7 @@ services:
     phase: 1
   - name: conversation-service
     repository: conversation-service
-    status: planned
+    status: foundation-ready
     owner: core
     runtime: java
     framework: spring-boot
