@@ -69,10 +69,10 @@ services:
     phase: 1
   - name: widget-sdk
     repository: widget-sdk
-    status: planned
+    status: working
     owner: experience
     runtime: typescript
-    framework: react
+    framework: ajv
     phase: 1
   - name: connection-service
     repository: connection-service
