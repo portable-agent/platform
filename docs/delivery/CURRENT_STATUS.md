@@ -14,7 +14,7 @@
 | `test-lab` | Календарный acceptance-тест | Один JWT и один контракт на всём пути | Схема Agent `2.1.0`, подтверждение и проверка часового пояса работают | Добавить повтор запроса и проверку отсутствия дубля |
 | `agent-runtime` | Текст в предложение действия | Детерминированное предложение встречи без скрытого выполнения | API `2.1.0`, проверка JWT и календарное предложение работают в общем сценарии | Вызывать через Channel Gateway, AI-модель пока не выбирать |
 | `channel-gateway` | Общий вход каналов | Web и Telegram используют один контракт | Репа создана; JWT, OpenAPI-типы и вызов Agent работают в общем acceptance | После Conversation Service заменить временный прямой вызов Agent |
-| `conversation-service` | Состояние диалога и прикладная оркестрация | Повтор сообщения не создаёт второе действие | Privacy-first хранение смержено: PostgreSQL/jOOQ, ключ повтора, TTL 24 часа и очистка текста проверены на Testcontainers | Вызвать Agent Runtime по закреплённому контракту |
+| `conversation-service` | Состояние диалога и прикладная оркестрация | Повтор сообщения не создаёт второе действие | Хранение и durable processing смержены: ключ повтора, TTL, atomic lease, fencing token и reply cleanup проверены на PostgreSQL | Вызвать Agent Runtime по закреплённому контракту |
 | `widget-sdk` | Карточка подтверждения | Один UI-контракт для разных каналов | Renderer-neutral core `0.1.0` выпущен; runtime schema, generated type и decision command проверены | Подключить к первому адаптеру после Conversation Service |
 
 ## Что уже проверено
@@ -47,6 +47,7 @@
     -> [готово] Widget SDK 0.1.0
     -> [готово] каркас Conversation Service
     -> [готово] privacy-first решение и идемпотентное хранение
+    -> [готово] durable processing и защита нескольких worker
     -> [следом] вызов Agent Runtime
     -> переключение Channel Gateway
     -> Telegram adapter
