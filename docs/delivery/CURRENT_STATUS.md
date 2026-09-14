@@ -6,14 +6,15 @@
 | Репа | Что меняем или добавляем | Ожидаемый результат | Фактический результат | Следующий шаг |
 |---|---|---|---|---|
 | `.github` | Общие workflows и правила | Одинаковый CI/CD для всех сервисов | Java, Python, Node, docs, security и container workflows работают | Подключать правила к каждой новой репе |
-| `contracts` | Версионируемые внешние и внутренние API | Один проверяемый источник сетевых DTO | Bundle `2.2.0` выпущен; добавлен Channel Gateway API | Спроектировать контракт ответа для виджета |
+| `contracts` | Версионируемые внешние и внутренние API | Один проверяемый источник сетевых DTO | Bundle `2.2.0` выпущен; добавлен Channel Gateway API | Добавить совместимый ответ диалога и карточку подтверждения |
 | `action-service` | Подтверждение и надёжное выполнение | `AWAITING_APPROVAL → APPROVED → EXECUTING → SUCCEEDED/FAILED` | jOOQ, outbox, Temporal worker и вызов MCP Gateway работают; backend acceptance зелёный | Принимать команду через Channel Gateway |
 | `calendar-mcp` | `create_event` | Идемпотентное создание fake-события | Fake Calendar, OIDC и защита от дублей работают в общем сценарии | Оставить эталонным fake-коннектором |
 | `mcp-gateway` | OIDC, allowlist и MCP client | Безопасный stateless-маршрутизатор | Foundation смержен и проверен вызовом Calendar MCP | Добавлять коннекторы только по контракту |
 | `deploy` | Приложения в локальном Compose | Одна команда поднимает вертикальный backend-срез | Channel, Agent, Action, Temporal, MCP Gateway и Calendar поднимаются; GitHub smoke зелёный | Ускорить сборку полного smoke |
 | `test-lab` | Календарный acceptance-тест | Один JWT и один контракт на всём пути | Схема Agent `2.1.0`, подтверждение и проверка часового пояса работают | Добавить повтор запроса и проверку отсутствия дубля |
 | `agent-runtime` | Текст в предложение действия | Детерминированное предложение встречи без скрытого выполнения | API `2.1.0`, проверка JWT и календарное предложение работают в общем сценарии | Вызывать через Channel Gateway, AI-модель пока не выбирать |
-| `channel-gateway` | Общий вход каналов | Web и Telegram используют один контракт | Репа создана; JWT, OpenAPI-типы и вызов Agent работают в общем acceptance | Добавить сохранённое action в ответ после выбора orchestration |
+| `channel-gateway` | Общий вход каналов | Web и Telegram используют один контракт | Репа создана; JWT, OpenAPI-типы и вызов Agent работают в общем acceptance | После Conversation Service заменить временный прямой вызов Agent |
+| `conversation-service` | Состояние диалога и прикладная оркестрация | Повтор сообщения не создаёт второе действие | Граница закреплена в ADR-0013; репа ещё не создана | Добавить контракт API и создать TDD-каркас |
 | `widget-sdk` | Карточка подтверждения | Один UI-контракт для разных каналов | Репа ещё не создана | Спроектировать тип карточки и создать репу |
 
 ## Что уже проверено
@@ -41,7 +42,9 @@
     -> [готово] Action Service и Temporal worker
     -> [готово] Channel Gateway и Agent Runtime в общем Compose
     -> [готово] backend acceptance
-    -> [следом] контракт карточки подтверждения и Widget SDK
+    -> [решено] Conversation Service владеет диалогом и цепочкой Agent → Action
+    -> [следом] совместимый контракт диалога и карточки подтверждения
+    -> Conversation Service и Widget SDK
     -> Telegram adapter
 ```
 

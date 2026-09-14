@@ -69,12 +69,14 @@
 2. Сначала написать сквозной acceptance-тест на fake AI и fake Calendar MCP.
 3. Реализовать Channel Gateway без зависимости от Telegram.
 4. Сделать Telegram адаптер примером канала, а не центром архитектуры.
-5. Создать Widget SDK и карточку подтверждения.
-6. Реализовать Conversation Service, Approval Service и MCP Gateway минимального размера.
-7. Подключить один реальный календарь за тем же контрактом, что и fake.
-8. Добавить audit trail, policy decision и durable workflow.
-9. Провести load, soak, chaos и restore проверки.
-10. Выпустить публичную MVP-версию с demo и инструкцией запуска.
+5. Добавить совместимый контракт ответа диалога и карточки подтверждения.
+6. Реализовать Conversation Service минимального размера и переключить на него Channel Gateway.
+7. Создать Widget SDK, который проверяет и отображает общий контракт.
+8. Реализовать Approval Service только когда появятся правила подтверждения сложнее текущего Action API.
+9. Подключить один реальный календарь за тем же контрактом, что и fake.
+10. Добавить audit trail, policy decision и durable workflow.
+11. Провести load, soak, chaos и restore проверки.
+12. Выпустить публичную MVP-версию с demo и инструкцией запуска.
 
 Definition of Done MVP:
 
