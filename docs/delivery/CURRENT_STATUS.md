@@ -7,10 +7,10 @@
 |---|---|---|---|---|
 | `.github` | Общие workflows и правила | Одинаковый CI/CD для всех сервисов | Java, Python, Node, docs, security и container workflows работают; чистый Trivy runner исправлен | Подключать правила к каждой новой репе |
 | `contracts` | Версионируемые внешние и внутренние API | Один проверяемый источник сетевых DTO | Локальный bundle `2.5.0`: сообщения, confirmation card и решение через Gateway | Выпустить после восстановления GitHub |
-| `action-service` | Подтверждение и надёжное выполнение | `AWAITING_APPROVAL → APPROVED → EXECUTING → SUCCEEDED/FAILED` | jOOQ, outbox, Temporal worker и вызов MCP Gateway работают; backend acceptance зелёный | Принимать команду через Channel Gateway |
+| `action-service` | Подтверждение и надёжное выполнение | `AWAITING_APPROVAL → APPROVED → EXECUTING → SUCCEEDED/FAILED` | jOOQ, outbox, Temporal worker и вызов MCP Gateway работают; решение приходит через Channel Gateway | Оставить источником истины для решения и статуса |
 | `calendar-mcp` | `create_event` | Идемпотентное создание fake-события | Fake Calendar, OIDC и защита от дублей работают в общем сценарии | Оставить эталонным fake-коннектором |
 | `mcp-gateway` | OIDC, allowlist и MCP client | Безопасный stateless-маршрутизатор | Foundation смержен и проверен вызовом Calendar MCP | Добавлять коннекторы только по контракту |
-| `deploy` | Приложения в локальном Compose | Одна команда поднимает вертикальный backend-срез | Весь срез с Conversation поднимается; Gateway связан с Conversation и Action | Обновить старый локальный Keycloak volume или использовать чистое окружение |
+| `deploy` | Приложения в локальном Compose | Одна команда поднимает вертикальный backend-срез | Чистый срез поднят и проверен; Gateway связан с Conversation и Action | Подключить Telegram adapter после решения по identity |
 | `test-lab` | Календарный acceptance-тест | Один JWT и один контракт на всём пути | 19/19: карточка, решение через Gateway, Temporal, offset и отсутствие дубля | Добавить первый адаптер канала |
 | `agent-runtime` | Текст в предложение действия | Детерминированное предложение встречи без скрытого выполнения | API `2.1.0`, проверка JWT и календарное предложение работают в общем сценарии | Вызывать через Channel Gateway, AI-модель пока не выбирать |
 | `channel-gateway` | Общий вход каналов | Web и Telegram используют один контракт | Сообщение идёт через Conversation; команда Widget SDK — через Gateway в Action | Подключить первый адаптер |
@@ -32,7 +32,7 @@
 ```
 
 Проверка запускает реальные контейнеры отдельных репозиториев по закреплённым commit SHA. Последний
-зелёный запуск вошёл в `deploy` через merge `722d33f`.
+локальный зелёный запуск: `deploy` `3e67663`, 19 из 19 проверок прошли 23 сентября 2026 года.
 
 ## Текущий порядок
 
@@ -51,6 +51,7 @@
     -> [готово] вызов Agent Runtime и создание Action
     -> [готово] переключение Channel Gateway
     -> [готово] решение виджета через Channel Gateway
+    -> [решить] безопасная привязка Telegram identity к пользователю платформы
     -> [следом] Telegram adapter
 ```
 
