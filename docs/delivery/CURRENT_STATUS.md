@@ -1,21 +1,21 @@
 # Текущее состояние по репозиториям
 
-Дата среза: 14 сентября 2026 года. Этот файл обновляется после мержа этапа, а не после локального
-эксперимента.
+Дата среза: 23 сентября 2026 года. Этот файл обновляется после проверенного локального этапа или мержа,
+а не после незавершённого эксперимента.
 
 | Репа | Что меняем или добавляем | Ожидаемый результат | Фактический результат | Следующий шаг |
 |---|---|---|---|---|
 | `.github` | Общие workflows и правила | Одинаковый CI/CD для всех сервисов | Java, Python, Node, docs, security и container workflows работают; чистый Trivy runner исправлен | Подключать правила к каждой новой репе |
-| `contracts` | Версионируемые внешние и внутренние API | Один проверяемый источник сетевых DTO | Bundle `2.3.0` выпущен; добавлен Conversation API | Подключить контракт к Conversation Service |
+| `contracts` | Версионируемые внешние и внутренние API | Один проверяемый источник сетевых DTO | Локальный bundle `2.5.0`: сообщения, confirmation card и решение через Gateway | Выпустить после восстановления GitHub |
 | `action-service` | Подтверждение и надёжное выполнение | `AWAITING_APPROVAL → APPROVED → EXECUTING → SUCCEEDED/FAILED` | jOOQ, outbox, Temporal worker и вызов MCP Gateway работают; backend acceptance зелёный | Принимать команду через Channel Gateway |
 | `calendar-mcp` | `create_event` | Идемпотентное создание fake-события | Fake Calendar, OIDC и защита от дублей работают в общем сценарии | Оставить эталонным fake-коннектором |
 | `mcp-gateway` | OIDC, allowlist и MCP client | Безопасный stateless-маршрутизатор | Foundation смержен и проверен вызовом Calendar MCP | Добавлять коннекторы только по контракту |
-| `deploy` | Приложения в локальном Compose | Одна команда поднимает вертикальный backend-срез | Channel, Agent, Action, Temporal, MCP Gateway и Calendar поднимаются; GitHub smoke зелёный | Ускорить сборку полного smoke |
-| `test-lab` | Календарный acceptance-тест | Один JWT и один контракт на всём пути | Схема Agent `2.1.0`, подтверждение и проверка часового пояса работают | Добавить повтор запроса и проверку отсутствия дубля |
+| `deploy` | Приложения в локальном Compose | Одна команда поднимает вертикальный backend-срез | Весь срез с Conversation поднимается; Gateway связан с Conversation и Action | Обновить старый локальный Keycloak volume или использовать чистое окружение |
+| `test-lab` | Календарный acceptance-тест | Один JWT и один контракт на всём пути | 19/19: карточка, решение через Gateway, Temporal, offset и отсутствие дубля | Добавить первый адаптер канала |
 | `agent-runtime` | Текст в предложение действия | Детерминированное предложение встречи без скрытого выполнения | API `2.1.0`, проверка JWT и календарное предложение работают в общем сценарии | Вызывать через Channel Gateway, AI-модель пока не выбирать |
-| `channel-gateway` | Общий вход каналов | Web и Telegram используют один контракт | Репа создана; JWT, OpenAPI-типы и вызов Agent работают в общем acceptance | После Conversation Service заменить временный прямой вызов Agent |
-| `conversation-service` | Состояние диалога и прикладная оркестрация | Повтор сообщения не создаёт второе действие | Хранение и durable processing смержены: ключ повтора, TTL, atomic lease, fencing token и reply cleanup проверены на PostgreSQL | Вызвать Agent Runtime по закреплённому контракту |
-| `widget-sdk` | Карточка подтверждения | Один UI-контракт для разных каналов | Renderer-neutral core `0.1.0` выпущен; runtime schema, generated type и decision command проверены | Подключить к первому адаптеру после Conversation Service |
+| `channel-gateway` | Общий вход каналов | Web и Telegram используют один контракт | Сообщение идёт через Conversation; команда Widget SDK — через Gateway в Action | Подключить первый адаптер |
+| `conversation-service` | Состояние диалога и прикладная оркестрация | Повтор сообщения не создаёт второе действие | PostgreSQL, lease, Agent → Action, карточка и сохранение offset проверены общим E2E | Оставить владельцем диалога при подключении адаптера |
+| `widget-sdk` | Карточка подтверждения | Один UI-контракт для разных каналов | Renderer-neutral core создаёт проверенную decision command | Подключить к Telegram adapter |
 
 ## Что уже проверено
 
@@ -48,9 +48,10 @@
     -> [готово] каркас Conversation Service
     -> [готово] privacy-first решение и идемпотентное хранение
     -> [готово] durable processing и защита нескольких worker
-    -> [следом] вызов Agent Runtime
-    -> переключение Channel Gateway
-    -> Telegram adapter
+    -> [готово] вызов Agent Runtime и создание Action
+    -> [готово] переключение Channel Gateway
+    -> [готово] решение виджета через Channel Gateway
+    -> [следом] Telegram adapter
 ```
 
 ## Правило результата

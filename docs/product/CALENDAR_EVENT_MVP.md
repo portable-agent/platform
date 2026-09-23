@@ -30,6 +30,7 @@ sequenceDiagram
     autonumber
     actor User as Пользователь
     participant Channel as Канал
+    participant Talk as Conversation Service
     participant Agent as Agent Runtime
     participant Action as Action Service
     participant Widget as Виджет
@@ -37,13 +38,16 @@ sequenceDiagram
     participant Calendar as Fake Calendar
 
     User->>Channel: Создай встречу завтра в 12:00 на 30 минут
-    Channel->>Agent: Нормализованный текст и часовой пояс
-    Agent-->>Channel: Уточнение, если данных не хватает
-    Agent->>Action: calendar.create_event + payload + requestKey
-    Action-->>Widget: AWAITING_APPROVAL + payloadHash
+    Channel->>Talk: Нормализованный текст и часовой пояс
+    Talk->>Agent: Разобрать сообщение
+    Agent-->>Talk: Уточнение, если данных не хватает
+    Talk->>Action: calendar.create_event + payload + requestKey
+    Action-->>Talk: AWAITING_APPROVAL + payloadHash
+    Talk-->>Widget: Карточка сохранённого действия
     Widget-->>User: Показать точные данные
     User->>Widget: Подтвердить payloadHash
-    Widget->>Action: CONFIRM
+    Widget->>Channel: CONFIRM + payloadHash
+    Channel->>Action: Та же команда решения
     Action->>Flow: Выполнить сохранённое действие
     Flow->>Calendar: Создать событие с requestKey
     Calendar-->>Flow: eventId
