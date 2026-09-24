@@ -8,7 +8,7 @@ Portable Agent использует GitHub Organization и отдельную р
 |---|---|---|
 | `.github` | Общие шаблоны, правила и CI/CD | Создан, развивается |
 | `platform` | Архитектура, ADR, карта и публичная документация | Создан, сайт опубликован |
-| `contracts` | OpenAPI, AsyncAPI, JSON Schema и примеры | Bundle `2.1.0` выпущен и используется сервисами |
+| `contracts` | OpenAPI, AsyncAPI, JSON Schema и примеры | Локальный bundle `2.5.0` используется сервисами |
 | `action-service` | Java-сервис действий | jOOQ, MVC, outbox и Temporal worker работают в backend-срезе |
 | `agent-runtime` | Python-сервис агента | MVC, JWT и предложение календарного действия работают в backend-срезе |
 | `deploy` | Compose, Helm charts и тестовые окружения | Локальный backend-срез и GitHub acceptance проходят одной командой |
@@ -17,6 +17,9 @@ Portable Agent использует GitHub Organization и отдельную р
 | `calendar-mcp` | MCP-интеграция календаря | Fake Calendar, OIDC и идемпотентность работают в общем сценарии |
 | `mcp-gateway` | Безопасный вызов настроенных MCP-сервисов | Stateless-маршрутизатор работает между Action и Calendar MCP |
 | `channel-gateway` | Единый вход независимых каналов | Текстовый API, JWT и вызов Agent Runtime работают в общем сценарии |
+| `conversation-service` | Состояние диалога | PostgreSQL, защита повторов и цепочка Agent → Action работают в общем сценарии |
+| `widget-sdk` | Независимая от канала модель виджета | Карточка подтверждения и decision command проверяются без UI-фреймворка |
+| `telegram-adapter` | Тонкая граница Telegram | Локальная репа, защищённый webhook и начало Device Flow проверены тестами и Docker build |
 
 Каркас означает, что настроены структура и инженерные проверки. Это не означает, что правила бизнеса уже
 спроектированы или реализованы.
@@ -25,10 +28,9 @@ Portable Agent использует GitHub Organization и отдельную р
 
 ```text
 portable-agent organization
-├── conversation-service    состояние диалога
 ├── approval-service        подтверждение действий
 ├── policy-bundle           правила OPA
-└── widget-sdk              переносимые виджеты
+└── следующие channel adapters
 ```
 
 Названия и границы запланированных репозиториев могут измениться до начала реализации.
