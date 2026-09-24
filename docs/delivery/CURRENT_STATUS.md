@@ -16,7 +16,7 @@
 | `channel-gateway` | Общий вход каналов | Web и Telegram используют один контракт | Сообщение идёт через Conversation; команда Widget SDK — через Gateway в Action | Подключить первый адаптер |
 | `conversation-service` | Состояние диалога и прикладная оркестрация | Повтор сообщения не создаёт второе действие | PostgreSQL, lease, Agent → Action, карточка и сохранение offset проверены общим E2E | Оставить владельцем диалога при подключении адаптера |
 | `widget-sdk` | Карточка подтверждения | Один UI-контракт для разных каналов | Renderer-neutral core создаёт проверенную decision command | Подключить к Telegram adapter |
-| `telegram-adapter` | Telegram как сменный канал | Telegram identity привязывается только после входа через Keycloak | Отдельная локальная репа: webhook, `/link`, Device Flow, AES-256-GCM, PostgreSQL, 15/15 тестов и Docker build | Добавить polling и завершение привязки |
+| `telegram-adapter` | Telegram как сменный канал | Telegram identity привязывается только после входа через Keycloak | Webhook и полный Device Flow: lease, AES-256-GCM, PostgreSQL, 25/25 unit, repository integration и Docker build | Обновлять access token и передавать сообщение в Gateway |
 
 ## Что уже проверено
 
@@ -53,8 +53,8 @@
     -> [готово] переключение Channel Gateway
     -> [готово] решение виджета через Channel Gateway
     -> [решено] Telegram identity привязывается через OAuth Device Flow
-    -> [готово] первый срез Telegram adapter: webhook и начало `/link`
-    -> [следом] polling и завершение привязки
+    -> [готово] Telegram adapter: webhook, `/link`, polling и зашифрованная связь
+    -> [следом] refresh access token и сообщение через Gateway
 ```
 
 ## Правило результата
