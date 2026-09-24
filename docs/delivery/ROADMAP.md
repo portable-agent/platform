@@ -17,8 +17,9 @@
 
 ## Фаза 1 — Первый вертикальный срез
 
-Состояние: backend-путь от независимого Channel Gateway до fake-календаря готов. Следующий пакет —
-контракт карточки подтверждения, Widget SDK и первый адаптер.
+Состояние: backend-путь от независимого Channel Gateway до fake-календаря готов. Первый Telegram
+Adapter умеет безопасно связывать identity, отправлять сообщения и подтверждать карточки. Следующий
+пакет — включение адаптера в общий Compose и black-box сценарий без настоящего Telegram-токена.
 
 - Channel Gateway и Telegram adapter.
 - Conversation Service и Agent Runtime.

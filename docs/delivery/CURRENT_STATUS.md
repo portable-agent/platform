@@ -6,17 +6,17 @@
 | Репа | Что меняем или добавляем | Ожидаемый результат | Фактический результат | Следующий шаг |
 |---|---|---|---|---|
 | `.github` | Общие workflows и правила | Одинаковый CI/CD для всех сервисов | Java, Python, Node, docs, security и container workflows работают; чистый Trivy runner исправлен | Подключать правила к каждой новой репе |
-| `contracts` | Версионируемые внешние и внутренние API | Один проверяемый источник сетевых DTO | Локальный bundle `2.5.0`: сообщения, confirmation card и решение через Gateway | Выпустить после восстановления GitHub |
+| `contracts` | Версионируемые внешние и внутренние API | Один проверяемый источник сетевых DTO | Release `2.5.0` опубликован с checksum и provenance; общий MessageContext устраняет циклические OpenAPI-ссылки | Использовать release во всех новых адаптерах |
 | `action-service` | Подтверждение и надёжное выполнение | `AWAITING_APPROVAL → APPROVED → EXECUTING → SUCCEEDED/FAILED` | jOOQ, outbox, Temporal worker и вызов MCP Gateway работают; решение приходит через Channel Gateway | Оставить источником истины для решения и статуса |
 | `calendar-mcp` | `create_event` | Идемпотентное создание fake-события | Fake Calendar, OIDC и защита от дублей работают в общем сценарии | Оставить эталонным fake-коннектором |
 | `mcp-gateway` | OIDC, allowlist и MCP client | Безопасный stateless-маршрутизатор | Foundation смержен и проверен вызовом Calendar MCP | Добавлять коннекторы только по контракту |
-| `deploy` | Приложения в локальном Compose | Одна команда поднимает вертикальный backend-срез | Чистый срез поднят и проверен; Gateway связан с Conversation и Action | Подключить Telegram adapter после решения по identity |
-| `test-lab` | Календарный acceptance-тест | Один JWT и один контракт на всём пути | 19/19: карточка, решение через Gateway, Temporal, offset и отсутствие дубля | Добавить первый адаптер канала |
+| `deploy` | Приложения в локальном Compose | Одна команда поднимает вертикальный backend-срез | GitHub acceptance зелёный; Gateway связан с Conversation и Action | Добавить Telegram Adapter и fake Telegram API |
+| `test-lab` | Календарный acceptance-тест | Один JWT и один контракт на всём пути | Карточка, решение через Gateway, Temporal, offset и отсутствие дубля проверены | Добавить black-box сценарий Telegram-канала |
 | `agent-runtime` | Текст в предложение действия | Детерминированное предложение встречи без скрытого выполнения | API `2.1.0`, проверка JWT и календарное предложение работают в общем сценарии | Вызывать через Channel Gateway, AI-модель пока не выбирать |
-| `channel-gateway` | Общий вход каналов | Web и Telegram используют один контракт | Сообщение идёт через Conversation; команда Widget SDK — через Gateway в Action | Подключить первый адаптер |
+| `channel-gateway` | Общий вход каналов | Web и Telegram используют один контракт | Сообщение идёт через Conversation; решение канала — через Gateway в Action | Проверить Telegram в общем Compose-сценарии |
 | `conversation-service` | Состояние диалога и прикладная оркестрация | Повтор сообщения не создаёт второе действие | PostgreSQL, lease, Agent → Action, карточка и сохранение offset проверены общим E2E | Оставить владельцем диалога при подключении адаптера |
-| `widget-sdk` | Карточка подтверждения | Один UI-контракт для разных каналов | Renderer-neutral core создаёт проверенную decision command | Подключить к Telegram adapter |
-| `telegram-adapter` | Telegram как сменный канал | Telegram identity привязывается только после входа через Keycloak | Webhook и полный Device Flow: lease, AES-256-GCM, PostgreSQL, 25/25 unit, repository integration и Docker build | Обновлять access token и передавать сообщение в Gateway |
+| `widget-sdk` | Карточка подтверждения | Один UI-контракт для разных каналов | Renderer-neutral core создаёт проверенную decision command; Telegram использует тот же сетевой контракт | Добавить готовые helpers для следующих UI-каналов |
+| `telegram-adapter` | Telegram как сменный канал | Telegram identity привязывается только после входа через Keycloak | Публичная репа: Device Flow, зашифрованный refresh token, сообщения через Gateway и одноразовые confirmation-кнопки; 42 теста, PostgreSQL 18 и container CI зелёные | Подключить к локальному Compose и fake Telegram API |
 
 ## Что уже проверено
 
@@ -33,7 +33,8 @@
 ```
 
 Проверка запускает реальные контейнеры отдельных репозиториев по закреплённым commit SHA. Последний
-локальный зелёный запуск: `deploy` `3e67663`, 19 из 19 проверок прошли 23 сентября 2026 года.
+GitHub acceptance для `deploy` прошёл 25 сентября 2026 года после явного checkout Conversation Service.
+Telegram Adapter отдельно проверен unit-, contract- и PostgreSQL integration-тестами и production build.
 
 ## Текущий порядок
 
@@ -54,7 +55,10 @@
     -> [готово] решение виджета через Channel Gateway
     -> [решено] Telegram identity привязывается через OAuth Device Flow
     -> [готово] Telegram adapter: webhook, `/link`, polling и зашифрованная связь
-    -> [следом] refresh access token и сообщение через Gateway
+    -> [готово] refresh access token и сообщение через Gateway
+    -> [готово] confirmation-кнопки с одноразовым callback и lease
+    -> [готово] публичная репа, CI и container image
+    -> [следом] Keycloak client, fake Telegram API и Compose E2E
 ```
 
 ## Правило результата
