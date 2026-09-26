@@ -1,6 +1,6 @@
 # Текущее состояние по репозиториям
 
-Дата среза: 25 сентября 2026 года. Этот файл обновляется после проверенного локального этапа или мержа,
+Дата среза: 26 сентября 2026 года. Этот файл обновляется после проверенного локального этапа или мержа,
 а не после незавершённого эксперимента.
 
 | Репа | Что меняем или добавляем | Ожидаемый результат | Фактический результат | Следующий шаг |
@@ -8,11 +8,11 @@
 | `.github` | Общие workflows и правила | Одинаковый CI/CD для всех сервисов | Java, Python, Node, docs, security и container workflows работают; чистый Trivy runner исправлен | Подключать правила к каждой новой репе |
 | `contracts` | Версионируемые внешние и внутренние API | Один проверяемый источник сетевых DTO | Release `2.5.0` опубликован с checksum и provenance; общий MessageContext устраняет циклические OpenAPI-ссылки | Использовать release во всех новых адаптерах |
 | `action-service` | Подтверждение и надёжное выполнение | `AWAITING_APPROVAL → APPROVED → EXECUTING → SUCCEEDED/FAILED` | jOOQ, outbox, Temporal worker и вызов MCP Gateway работают; решение приходит через Channel Gateway | Оставить источником истины для решения и статуса |
-| `calendar-mcp` | `create_event` | Идемпотентное создание fake-события | Fake Calendar, OIDC и защита от дублей работают в общем сценарии | Добавить Google provider за тем же контрактом |
+| `calendar-mcp` | `create_event` | Идемпотентное создание fake-события | Fake Calendar, OIDC и защита от дублей работают в общем сценарии | Добавить Google provider после trusted execution context и Connection Service |
 | `mcp-gateway` | OIDC, allowlist и MCP client | Безопасный stateless-маршрутизатор | Foundation смержен и проверен вызовом Calendar MCP | Добавлять коннекторы только по контракту |
-| `deploy` | Приложения в локальном Compose | Одна команда поднимает вертикальный backend-срез | Реальный Telegram webhook, Keycloak Device Flow и полный backend работают локально | Сохранить real Telegram N2N как ручной smoke |
-| `test-lab` | Календарный acceptance-тест | Один JWT и один контракт на всём пути | Карточка, решение через Gateway, Temporal, offset и отсутствие дубля проверены | Добавить black-box сценарий Telegram и Google stub |
-| `agent-runtime` | Текст в предложение действия | Типизированное предложение встречи без скрытого выполнения | Технический ISO-формат работает, но не является пользовательским интерфейсом | Добавить `IntentModel`, естественный язык и structured output |
+| `deploy` | Приложения в локальном Compose | Одна команда поднимает вертикальный backend-срез | Реальный Telegram и opt-in Ollama/Qwen профиль работают отдельными командами | Подключить Connection Service и Google stub |
+| `test-lab` | Календарный acceptance-тест | Один JWT и один контракт на всём пути | Fake E2E проверяет 19 условий; opt-in AI E2E понимает обычную русскую фразу | Добавить Google OAuth и Calendar API stub |
+| `agent-runtime` | Текст в предложение действия | Типизированное предложение встречи без скрытого выполнения | `IntentModel`, demo и OpenAI-compatible provider работают; Qwen 7B проверена локально | Добавить уточнение при неполных данных |
 | `channel-gateway` | Общий вход каналов | Web и Telegram используют один контракт | Сообщение идёт через Conversation; решение канала — через Gateway в Action | Проверить Telegram в общем Compose-сценарии |
 | `conversation-service` | Состояние диалога и прикладная оркестрация | Повтор сообщения не создаёт второе действие | PostgreSQL, lease, Agent → Action, карточка и сохранение offset проверены общим E2E | Оставить владельцем диалога при подключении адаптера |
 | `widget-sdk` | Карточка подтверждения | Один UI-контракт для разных каналов | Renderer-neutral core создаёт проверенную decision command; Telegram использует тот же сетевой контракт | Добавить готовые helpers для следующих UI-каналов |
@@ -60,8 +60,10 @@ Telegram Adapter отдельно проверен unit-, contract- и PostgreSQ
     -> [готово] публичная репа, CI и container image
     -> [готово] Keycloak client, fake Telegram API и Compose E2E
     -> [готово] настоящий Telegram bot, webhook и Device Flow
-    -> [следом] естественный язык и уточнения в Agent Runtime
-    -> [затем] Google Calendar provider и OAuth
+    -> [готово] естественный язык через OpenAI-compatible provider и локальную Qwen
+    -> [решено] Google OAuth принадлежит Connection Service, а не каналу или MCP
+    -> [следом] trusted execution context и каркас Connection Service
+    -> [затем] Google Calendar provider и OAuth stub
     -> [после real N2N] trace в Tempo и связанные логи в Loki/Grafana
 ```
 
