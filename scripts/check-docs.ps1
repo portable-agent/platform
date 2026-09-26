@@ -8,7 +8,8 @@ $requiredFiles = @(
     "docs/index.md",
     "docs/development.md",
     "docs/runbook.md",
-    "docs/architecture/PLATFORM.md"
+    "docs/architecture/PLATFORM.md",
+    "docs/adr/0015-google-calendar-connection.md"
 )
 
 $missingFiles = $requiredFiles | Where-Object { -not (Test-Path -LiteralPath $_ -PathType Leaf) }
@@ -38,6 +39,21 @@ if ($catalogText -notmatch "github\.com/project-slug:\s*\S+/\S+") {
 $mkdocsText = Get-Content -LiteralPath "mkdocs.yml" -Raw
 if ($mkdocsText -notmatch "(?m)^docs_dir:\s*docs\s*$") {
     throw "mkdocs.yml must contain docs_dir: docs."
+}
+
+$googleAdr = Get-Content -LiteralPath "docs/adr/0015-google-calendar-connection.md" -Raw
+foreach ($required in @(
+    "connection-service",
+    "Authorization Code",
+    "refresh token",
+    "actorId",
+    "calendar.events",
+    "base32hex",
+    "fake-calendar"
+)) {
+    if ($googleAdr -notmatch [regex]::Escape($required)) {
+        throw "Google Calendar ADR does not contain $required."
+    }
 }
 
 Write-Host "Documentation follows the project standard."

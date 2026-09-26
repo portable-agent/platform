@@ -36,3 +36,4 @@ nav:
       - Contract-first: adr/0012-contract-first.md
       - Conversation Service: adr/0013-conversation-orchestration.md
       - Привязка Telegram: adr/0014-telegram-account-link.md
+      - Подключение Google Calendar: adr/0015-google-calendar-connection.md
