@@ -1,6 +1,6 @@
 # MVP: создание встречи
 
-Статус: правила подтверждены владельцем продукта.
+Статус: правила подтверждены владельцем продукта; fake acceptance проходит, Google provider реализован.
 
 ## Результат для пользователя
 
@@ -8,7 +8,7 @@
 карточку с точными аргументами. Встреча создаётся только после явного подтверждения.
 
 Первый исполнитель — `fake-calendar`. Он позволяет проверить весь путь без внешнего аккаунта. Реальный
-календарь позже подключается за тем же контрактом.
+Google Calendar подключается за тем же контрактом только при доступном подключении пользователя.
 
 ## Правила первой версии
 
@@ -35,7 +35,7 @@ sequenceDiagram
     participant Action as Action Service
     participant Widget as Виджет
     participant Flow as Temporal
-    participant Calendar as Fake Calendar
+    participant Calendar as Calendar MCP
 
     User->>Channel: Создай встречу завтра в 12:00 на 30 минут
     Channel->>Talk: Нормализованный текст и часовой пояс
@@ -49,7 +49,7 @@ sequenceDiagram
     Widget->>Channel: CONFIRM + payloadHash
     Channel->>Action: Та же команда решения
     Action->>Flow: Выполнить сохранённое действие
-    Flow->>Calendar: Создать событие с requestKey
+    Flow->>Calendar: Создать событие с requestKey через выбранный provider
     Calendar-->>Flow: eventId
     Flow-->>Action: SUCCEEDED
     Action-->>User: Встреча создана
@@ -82,7 +82,7 @@ stateDiagram-v2
 
 ## Не входит в первый инкремент
 
-- Google OAuth и настоящий календарь;
+- новые календарные providers кроме уже реализованных fake и Google;
 - голосовое распознавание;
 - изменение и удаление встреч;
 - повторяющиеся события;
