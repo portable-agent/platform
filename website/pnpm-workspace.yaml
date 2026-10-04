@@ -1,6 +1,13 @@
 allowBuilds:
   core-js: true
+minimumReleaseAgeExclude:
+  - http-cache-semantics@4.3.0
 overrides:
   js-yaml: 4.3.2
   serialize-javascript: 7.0.3
   image-size: 2.0.3
+  brace-expansion@1.1.18: 1.1.20
+  fast-uri@3.1.6: 3.1.7
+  http-cache-semantics@4.2.0: 4.3.0
+  joi@17.13.6: 17.13.7
+  webpack-dev-middleware@7.4.5: 7.4.6
