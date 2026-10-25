@@ -42,6 +42,17 @@ Calendar MCP передаёт `tenantId` и `actorId` в Connection Service. Т�
 Google Calendar этого пользователя и возвращает короткоживущий access token. Refresh token никогда
 не покидает Connection Service.
 
+Для первого среза Calendar MCP передаёт в Connection Service тот же короткоживущий service JWT,
+который Action Service получил по Client Credentials и отправил через MCP Gateway. Это сохраняет
+проверенный `tenant_id` без нового tenant-параметра в HTTP body. Токен содержит audience
+`mcp-gateway`, `calendar-mcp` и `connection-service`, а также scopes `mcp:call`, `calendar:write` и
+`connection:token`. Connection Service разрешает internal endpoint только `azp=action-service`.
+
+Gateway и Calendar MCP не сохраняют этот токен и не пишут его в логи. Такая делегация ограничена
+коротким сроком жизни токена и доверенным backend-контуром. Если сервисы выйдут из одного trust
+boundary, отдельный ADR заменит делегацию на OAuth Token Exchange либо workload identity с ещё более
+узкой аудиторией.
+
 Если подключений нет или их несколько без выбранного default, действие не выполняется скрытно.
 Пользователь получает понятный результат `connection_required` или выбирает календарь до нового
 подтверждения.
@@ -65,6 +76,8 @@ Google-адаптер использует Calendar API `events.insert` и scope
 - Публичные OAuth start/callback/disconnect принадлежат Connection Service.
 - Внутренний token endpoint требует service JWT с audience `connection-service` и scope
   `connection:token`.
+- В первом срезе `azp` этого токена равен `action-service`; Calendar MCP не получает отдельный
+  статический client secret.
 - Calendar MCP не принимает refresh token через MCP tool.
 - MCP Gateway не хранит токены и не выбирает календарь.
 - Action Service не шифрует provider credentials и не вызывает Google API.
